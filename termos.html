@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Termos · Escolhas da Dana</title>
+  <meta name="theme-color" content="#FBF6F2">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2232%22 fill=%22%23C21868%22/%3E%3Ctext x=%2232%22 y=%2245%22 font-family=%22Georgia,serif%22 font-style=%22italic%22 font-size=%2236%22 fill=%22%23FFF9F6%22 text-anchor=%22middle%22%3ED%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Jost:wght@300;400;500;600&family=Pinyon+Script&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .legal { max-width: 720px; margin: 0 auto; padding: 56px var(--gutter) 96px; }
+    .legal h1 { font-size: clamp(2.2rem, 7vw, 3.4rem); margin-bottom: 28px; }
+    .legal h2 { font-size: 1.5rem; margin: 36px 0 10px; }
+    .legal p, .legal li { color: var(--ink); }
+    .legal a { color: var(--rose); }
+    [data-only][hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <div class="page-frame" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="wordmark" href="index.html" data-keep-lang>Escolhas <em>da</em> Dana</a>
+    <nav class="site-nav" aria-label="Principal">
+      <a class="link-line" href="index.html" data-keep-lang style="display:inline-flex"><span lang="pt-BR" data-only="pt">Voltar ao site</span><span lang="en" data-only="en">Back to site</span></a>
+      <div class="lang-switch" role="group" aria-label="Idioma / Language">
+        <button type="button" data-set-lang="pt" aria-pressed="true" lang="pt-BR">PT</button>
+        <button type="button" data-set-lang="en" aria-pressed="false" lang="en">EN</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="legal" lang="pt-BR" data-only="pt">
+    <p class="eyebrow"><span>Escolhas da Dana</span></p>
+    <h1>Termos de uso e aviso de afiliados</h1>
+
+    <h2>Sobre este site</h2>
+    <p>O Escolhas da Dana reúne indicações de produtos de Danielly Matos Dana (@onlydaninha30). O conteúdo tem caráter informativo e reflete escolhas pessoais; não é aconselhamento profissional.</p>
+
+    <h2>Links de afiliados</h2>
+    <p>Alguns links são de afiliados (por exemplo Amazon, LTK, ShopMy e lojas parceiras). Quando você compra por eles, posso receber uma comissão, sem custo extra para você. Isso não muda as indicações.</p>
+
+    <h2>Compras, preços e disponibilidade</h2>
+    <p>As compras são feitas diretamente nas lojas. Preços, estoque, frete, prazos, devoluções e garantias são definidos e de responsabilidade de cada loja e podem mudar sem aviso. Confira sempre as informações na página da loja antes de comprar.</p>
+
+    <h2>Imagens e marcas</h2>
+    <p>As marcas citadas pertencem aos seus respectivos donos. Fotos e textos deste site não podem ser reproduzidos sem autorização.</p>
+
+    <h2>Contato</h2>
+    <p>Dúvidas e propostas de parceria pelo Instagram <a href="https://www.instagram.com/onlydaninha30/" target="_blank" rel="noopener">@onlydaninha30</a>.</p>
+  </main>
+
+  <main class="legal" lang="en" data-only="en">
+    <p class="eyebrow"><span>Escolhas da Dana</span></p>
+    <h1>Terms of use &amp; affiliate disclosure</h1>
+
+    <h2>About this site</h2>
+    <p>Escolhas da Dana gathers product recommendations by Danielly Matos Dana (@onlydaninha30). The content is for informational purposes and reflects personal picks; it is not professional advice.</p>
+
+    <h2>Affiliate disclosure</h2>
+    <p>Some links are affiliate links (for example Amazon, LTK, ShopMy and partner stores). If you make a purchase through them, I may earn a commission at no extra cost to you. This does not change my recommendations.</p>
+
+    <h2>Purchases, prices and availability</h2>
+    <p>Purchases are made directly with the retailers. Prices, stock, shipping, delivery times, returns and warranties are set by and are the responsibility of each retailer, and may change without notice. Always check the retailer’s page before buying.</p>
+
+    <h2>Images and trademarks</h2>
+    <p>Brands mentioned belong to their respective owners. Photos and text on this site may not be reproduced without permission.</p>
+
+    <h2>Contact</h2>
+    <p>Questions and partnership inquiries via Instagram <a href="https://www.instagram.com/onlydaninha30/" target="_blank" rel="noopener">@onlydaninha30</a>.</p>
+  </main>
+
+  <footer class="site-footer">
+    <p class="footer-mark">Escolhas <em>da</em> Dana</p>
+    <p class="footer-copy">© 2026 Danielly Matos Dana</p>
+  </footer>
+
+  <script>
+    (function () {
+      var L = ["pt", "en"], q = new URLSearchParams(location.search).get("lang"), saved = null;
+      try { saved = localStorage.getItem("dana-lang"); } catch (e) {}
+      var nav = (navigator.language || "").toLowerCase().indexOf("pt") === 0 ? "pt" : "en";
+      var lang = [q, saved, nav].filter(function (l) { return L.indexOf(l) > -1; })[0] || "pt";
+      document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
+      document.title = lang === "pt" ? "Termos · Escolhas da Dana" : "Terms · Escolhas da Dana";
+      document.querySelectorAll("[data-only]").forEach(function (el) { el.hidden = el.getAttribute("data-only") !== lang; });
+      document.querySelectorAll("[data-keep-lang]").forEach(function (a) { a.href = "index.html?lang=" + lang; });
+      document.querySelectorAll("[data-set-lang]").forEach(function (b) {
+        var l = b.getAttribute("data-set-lang");
+        b.setAttribute("aria-pressed", String(l === lang));
+        b.addEventListener("click", function () {
+          try { localStorage.setItem("dana-lang", l); } catch (e) {}
+          location.search = "?lang=" + l;
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

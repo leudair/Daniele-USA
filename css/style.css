@@ -1060,3 +1060,107 @@ h1, h2 { text-wrap: balance; }
   background: var(--metal-brushed); color: #3A1A26;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, .7), 0 2px 6px -3px rgba(74, 40, 20, .6);
 }
+
+/* ==========================================================================
+   Afiliados EUA/Brasil: coleções, onde comprar, vitrines, look, parcerias
+   ========================================================================== */
+.filters-extra {
+  display: flex; flex-wrap: wrap; gap: 14px 36px; align-items: center;
+  padding: 18px var(--gutter) 0;
+}
+.pill-group { display: flex; align-items: center; gap: 12px; min-width: 0; max-width: 100%; }
+.pill-group[hidden] { display: none; }
+.pill-label {
+  flex-shrink: 0;
+  font-size: .66rem; font-weight: 500; letter-spacing: .24em; text-transform: uppercase; color: #9C7744;
+}
+.pills { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding: 2px; }
+.pills::-webkit-scrollbar { display: none; }
+.pill {
+  flex-shrink: 0; min-height: 38px; padding: 0 16px;
+  background: #FFFCF6; border: 1px solid rgba(176, 139, 85, .55); border-radius: 999px;
+  font-family: var(--serif); font-size: .98rem; color: var(--wine); white-space: nowrap; cursor: pointer;
+  transition: background-color .3s, color .3s, border-color .3s;
+}
+.pill:hover { border-color: #9C7744; }
+.pill[aria-pressed="true"] {
+  background: var(--metal-brushed); border-color: #9C7744; color: #3A1A26; font-style: italic;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .7), 0 4px 10px -6px rgba(74, 40, 20, .6);
+}
+.pills-segmented .pill { font-family: var(--sans); font-size: .82rem; letter-spacing: .04em; }
+.empty-note {
+  max-width: var(--maxw); margin: 0 auto 10px; padding: 18px var(--gutter);
+  font-family: var(--serif); font-style: italic; font-size: 1.2rem; color: var(--muted);
+}
+.flag { font-size: .9rem; letter-spacing: 0; }
+.card-aff {
+  align-self: center; margin-top: 10px;
+  font-size: .62rem; font-weight: 500; letter-spacing: .22em; text-transform: uppercase;
+  color: #9C7744; text-decoration: none;
+}
+.card-aff::before { content: "ⓘ "; letter-spacing: 0; }
+.card-aff:hover { color: var(--wine); }
+
+/* Vitrines completas */
+.storefronts { padding: 72px 0 80px; background: var(--ivory); }
+.section-sub { margin: 14px auto 0; max-width: 46ch; color: var(--muted); }
+.storefront-list {
+  list-style: none; margin: 0 auto; padding: 0 var(--gutter);
+  max-width: 980px;
+  display: grid; gap: 22px;
+}
+.storefront {
+  position: relative;
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
+  padding: 30px 22px 28px;
+  background: #FFFCF6;
+  border: 4px solid transparent; border-image: var(--metal) 1;
+  box-shadow: 0 20px 36px -26px rgba(74, 24, 48, .45);
+  text-align: center;
+}
+.storefront h3 { font-size: 1.8rem; }
+.storefront-flag { font-size: 1.3rem; }
+@media (min-width: 700px) { .storefront-list { grid-template-columns: repeat(3, 1fr); } }
+
+/* Compre o look */
+.post-look { width: 100%; margin-top: 16px; text-align: center; }
+.post-look-title {
+  margin: 0 0 6px;
+  font-size: .66rem; font-weight: 500; letter-spacing: .24em; text-transform: uppercase; color: #9C7744;
+}
+.post-look ul { list-style: none; margin: 0; padding: 0; }
+.post-look a {
+  display: inline-flex; min-height: 34px; align-items: center;
+  font-family: var(--serif); font-size: 1.05rem; color: var(--wine);
+  text-decoration: underline; text-decoration-color: #C9A469; text-underline-offset: 5px;
+}
+.post-look a span { font-family: var(--sans); font-size: .78rem; color: var(--muted); margin-left: 4px; }
+.post-look a:hover { color: var(--rose); }
+
+/* Parcerias */
+.parcerias {
+  position: relative;
+  padding: 80px var(--gutter);
+  text-align: center;
+  background:
+    radial-gradient(ellipse 60% 80% at 50% 0%, rgba(184, 146, 90, .12), transparent 70%),
+    var(--blush);
+  border-top: 1px solid var(--gold-soft);
+}
+.parcerias h2 { font-size: clamp(2.3rem, 7vw, 3.8rem); margin-bottom: 16px; }
+.parcerias > p:not(.eyebrow) { max-width: 46ch; margin: 0 auto 28px; color: var(--ink); }
+.parcerias-actions { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px 26px; }
+
+/* Rodapé */
+.footer-social { display: flex; justify-content: center; align-items: center; gap: 14px; }
+.footer-social a {
+  display: inline-flex; min-height: 40px; align-items: center;
+  font-size: .7rem; font-weight: 500; letter-spacing: .24em; text-transform: uppercase;
+  color: var(--gold-pale); text-decoration: none;
+}
+.footer-social a:hover { color: var(--ivory); }
+.footer-social span { color: var(--gold); font-size: .6rem; }
+.amazon-note { font-style: italic; opacity: .85; }
+.footer-links { flex-wrap: wrap; gap: 4px 24px; }
+.storefronts { padding-top: 0; }
+.storefront h3 { min-height: 2.1em; display: flex; align-items: center; justify-content: center; line-height: 1.05; }

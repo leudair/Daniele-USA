@@ -55,8 +55,33 @@
       location.href = u.toString();
     });
   });
-  document.querySelectorAll('a[href="privacidade.html"]').forEach(function (a) {
-    a.href = "privacidade.html?lang=" + lang;
+  document.querySelectorAll('a[href="privacidade.html"], a[href="termos.html"]').forEach(function (a) {
+    a.href = a.getAttribute("href") + "?lang=" + lang;
+  });
+
+  /* ---------- Medição de cliques (Vercel Analytics e, se configurado, Google Analytics 4) ---------- */
+  if (D.ga4Id) {
+    var g = document.createElement("script");
+    g.async = true;
+    g.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(D.ga4Id);
+    document.head.appendChild(g);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag("js", new Date());
+    window.gtag("config", D.ga4Id);
+  }
+  function track(name, data) {
+    try { if (window.va) window.va("event", { name: name, data: data }); } catch (e) {}
+    try { if (window.gtag) window.gtag("event", name, data); } catch (e) {}
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest("a[data-track]");
+    if (!a) return;
+    track(a.getAttribute("data-track"), {
+      produto: a.getAttribute("data-produto") || "",
+      loja: a.getAttribute("data-loja") || "",
+      idioma: lang
+    });
   });
 
   /* ---------- Dados ---------- */
@@ -80,6 +105,11 @@
     return t(l.botao);
   }
 
+  function mercado(p) {
+    return p.mercado || (D.lojas[p.loja] || D.lojas.outra).mercado || "us";
+  }
+  var BANDEIRA = { us: "🇺🇸", br: "🇧🇷" };
+
   function placeholder(label, mark) {
     return '<div class="ph"><span class="ph-mark">' + esc(mark || "") + '</span><span class="ph-label">' + esc(label) + "</span></div>";
   }
@@ -98,7 +128,8 @@
     if (!p.link) {
       return '<span class="' + cls + ' is-disabled" aria-disabled="true">' + esc(S.linkEmBreve) + "</span>";
     }
-    return '<a class="' + cls + '" href="' + esc(p.link) + '" target="_blank" rel="sponsored noopener">' +
+    return '<a class="' + cls + '" href="' + esc(p.link) + '" target="_blank" rel="sponsored noopener"' +
+      ' data-track="affiliate_click" data-produto="' + esc(p.slug) + '" data-loja="' + esc(p.loja) + '">' +
       esc(label) + '<span class="sr-only"> ' + esc(S.abreNovaAba) + "</span></a>";
   }
 
@@ -132,16 +163,19 @@
 
   track.innerHTML = produtos.map(function (p, i) {
     var foto = p.imagem ? img(p.imagem, t(p.nome)) : placeholder(S.fotoProduto, t(p.nome).charAt(0));
-    return '<li class="card" id="produto-' + esc(p.slug) + '" data-cat="' + esc(p.categoria) + '" tabindex="-1">' +
+    return '<li class="card" id="produto-' + esc(p.slug) + '" data-cat="' + esc(p.categoria) + '" data-mkt="' + mercado(p) +
+      '" data-cols="' + esc((p.colecoes || []).join(" ")) + '" tabindex="-1">' +
       '<div class="card-frame">' +
       '<figure class="card-photo corners">' + foto +
       (p.exemplo ? '<span class="badge">' + esc(S.exemplo) + "</span>" : "") + "</figure>" +
       '<div class="card-body">' +
-      '<p class="card-meta"><span class="card-n">Nº ' + pad2(i + 1) + '</span><span class="card-store">' + esc(lojaNome(p)) + "</span></p>" +
+      '<p class="card-meta"><span class="card-n">Nº ' + pad2(i + 1) + '</span><span class="card-store">' +
+      '<span class="flag" aria-hidden="true">' + BANDEIRA[mercado(p)] + "</span> " + esc(lojaNome(p)) + "</span></p>" +
       '<h3 class="card-name">' + esc(t(p.nome)) + "</h3>" +
       (catNome[p.categoria] ? '<p class="card-cat">' + esc(catNome[p.categoria]) + "</p>" : "") +
       '<p class="card-text">' + esc(t(p.frase)) + "</p>" +
       buyButton(p, lojaBotao(p), "btn-outline btn-card") +
+      '<a class="card-aff" href="#como-comprar">' + esc(S.linkAfiliado) + "</a>" +
       "</div></div></li>";
   }).join("");
 
@@ -158,21 +192,85 @@
       '<span class="chip-name">' + esc(c.nome) + "</span></button>";
   }).join("");
 
+  /* Coleções (guias) e "onde comprar" (EUA / Brasil) */
+  var colecaoAtiva = "";
+  var mercadoAtivo = "todos";
+  var colecoesEl = $("#collections");
+  var cols = (D.colecoes || []).filter(function (c) {
+    return produtos.some(function (p) { return (p.colecoes || []).indexOf(c.id) > -1; });
+  });
+  if (cols.length) {
+    colecoesEl.innerHTML = cols.map(function (c) {
+      return '<button type="button" class="pill" data-col="' + esc(c.id) + '" aria-pressed="false">' + esc(t(c.nome)) + "</button>";
+    }).join("");
+  } else {
+    $("#collections-wrap").hidden = true;
+  }
+  var mercadoEl = $("#market");
+  var temUS = produtos.some(function (p) { return mercado(p) === "us"; });
+  var temBR = produtos.some(function (p) { return mercado(p) === "br"; });
+  if (temUS && temBR) {
+    mercadoEl.innerHTML = [["todos", S.mercadoTodos], ["us", S.mercadoUS], ["br", S.mercadoBR]].map(function (m) {
+      return '<button type="button" class="pill" data-mkt="' + m[0] + '" aria-pressed="' + (m[0] === "todos") + '">' + esc(m[1]) + "</button>";
+    }).join("");
+  } else {
+    $("#market-wrap").hidden = true;
+  }
+
+  function aplicarFiltros() {
+    var visiveis = 0;
+    track.querySelectorAll(".card").forEach(function (card) {
+      var ok = (filtroAtivo === "todos" || card.getAttribute("data-cat") === filtroAtivo) &&
+        (!colecaoAtiva || (" " + card.getAttribute("data-cols") + " ").indexOf(" " + colecaoAtiva + " ") > -1) &&
+        (mercadoAtivo === "todos" || card.getAttribute("data-mkt") === mercadoAtivo);
+      card.hidden = !ok;
+      if (ok) visiveis++;
+    });
+    $("#empty-note").hidden = visiveis > 0;
+    track.scrollLeft = 0;
+    updateArrows();
+  }
+
   function setFiltro(id) {
     filtroAtivo = id;
     filtersEl.querySelectorAll(".chip").forEach(function (b) {
       b.setAttribute("aria-pressed", String(b.getAttribute("data-filter") === id));
     });
-    track.querySelectorAll(".card").forEach(function (card) {
-      card.hidden = !(id === "todos" || card.getAttribute("data-cat") === id);
+    aplicarFiltros();
+  }
+
+  function limparFiltros() {
+    colecaoAtiva = "";
+    mercadoAtivo = "todos";
+    colecoesEl.querySelectorAll(".pill").forEach(function (b) { b.setAttribute("aria-pressed", "false"); });
+    mercadoEl.querySelectorAll(".pill").forEach(function (b) {
+      b.setAttribute("aria-pressed", String(b.getAttribute("data-mkt") === "todos"));
     });
-    track.scrollLeft = 0;
-    updateArrows();
+    setFiltro("todos");
   }
 
   filtersEl.addEventListener("click", function (e) {
     var b = e.target.closest(".chip");
     if (b) setFiltro(b.getAttribute("data-filter"));
+  });
+  colecoesEl.addEventListener("click", function (e) {
+    var b = e.target.closest(".pill");
+    if (!b) return;
+    var id = b.getAttribute("data-col");
+    colecaoAtiva = colecaoAtiva === id ? "" : id;
+    colecoesEl.querySelectorAll(".pill").forEach(function (x) {
+      x.setAttribute("aria-pressed", String(x.getAttribute("data-col") === colecaoAtiva));
+    });
+    aplicarFiltros();
+  });
+  mercadoEl.addEventListener("click", function (e) {
+    var b = e.target.closest(".pill");
+    if (!b) return;
+    mercadoAtivo = b.getAttribute("data-mkt");
+    mercadoEl.querySelectorAll(".pill").forEach(function (x) {
+      x.setAttribute("aria-pressed", String(x === b));
+    });
+    aplicarFiltros();
   });
 
   function cardStep() {
@@ -220,7 +318,7 @@
   function abrirProduto(slug) {
     var card = document.getElementById("produto-" + slug);
     if (!card) return;
-    if (card.hidden) setFiltro("todos");
+    if (card.hidden) limparFiltros();
 
     vitrine.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
     if (!vitrine.classList.contains("is-grid")) {
@@ -269,7 +367,7 @@
   } else {
     instaList.innerHTML = posts.map(function (p) {
       var link = p.link || D.instagram;
-      var prod = p.produto && bySlug[p.produto];
+      var look = (p.produtos || (p.produto ? [p.produto] : [])).map(function (s) { return bySlug[s]; }).filter(Boolean);
       return '<li class="post"><div class="post-card">' +
         '<a class="post-photo" href="' + esc(link) + '" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">' +
         (p.capa ? img(p.capa, t(p.legenda), false, "(min-width: 900px) 28vw, 78vw") : placeholder(S.capaPost, "")) +
@@ -278,9 +376,46 @@
         '<a class="btn btn-gold post-btn" href="' + esc(link) + '" target="_blank" rel="noopener">' + esc(S.verInstagram) +
         '<span class="sr-only">: ' + esc(t(p.legenda)) + " " + esc(S.abreNovaAba) + "</span></a>" +
         "</div>" +
-        (prod ? '<a class="link-line post-find" href="#produto/' + esc(prod.slug) + '">' + esc(S.encontrarProduto) + "</a>" : "") +
+        (look.length ? '<div class="post-look"><p class="post-look-title">' + esc(look.length > 1 ? S.compreLook : S.encontrarProduto) + "</p>" +
+          '<ul>' + look.map(function (pr) {
+            return '<li><a href="#produto/' + esc(pr.slug) + '">' + esc(t(pr.nome)) + ' <span>· ' + esc(lojaNome(pr)) + "</span></a></li>";
+          }).join("") + "</ul></div>" : "") +
         "</li>";
     }).join("");
+  }
+
+  /* ---------- Vitrines completas (Amazon Storefront, LTK, ShopMy) ---------- */
+  var vitrines = (D.vitrines || []).filter(function (v) { return v.url || D.mostrarExemplos; });
+  if (vitrines.length) {
+    $("#vitrines").hidden = false;
+    $("#vitrines-list").innerHTML = vitrines.map(function (v) {
+      var btn = v.url
+        ? '<a class="btn btn-gold" href="' + esc(v.url) + '" target="_blank" rel="sponsored noopener" data-track="storefront_click" data-loja="' + esc(v.id) + '">' + esc(S.vitrineBtn) + "</a>"
+        : '<span class="btn btn-gold is-disabled" aria-disabled="true">' + esc(S.emBreve) + "</span>";
+      return '<li class="storefront"><span class="storefront-flag" aria-hidden="true">' + (BANDEIRA[v.mercado] || "") + "</span>" +
+        '<h3>' + esc(v.nome) + "</h3>" + btn + "</li>";
+    }).join("");
+  }
+
+  /* ---------- Parcerias, redes e aviso da Amazon ---------- */
+  var acoes = '<a class="btn btn-gold" href="' + esc(D.instagram) + '" target="_blank" rel="noopener">' + esc(S.parceriasDm) + "</a>";
+  if (D.emailParcerias) {
+    acoes += '<a class="link-line" href="mailto:' + esc(D.emailParcerias) + '">' + esc(S.parceriasEmail) + "</a>";
+  }
+  $("#parcerias-actions").innerHTML = acoes;
+
+  var redes = [["Instagram", D.instagram]].concat([["TikTok", (D.redes || {}).tiktok], ["Pinterest", (D.redes || {}).pinterest]])
+    .filter(function (r) { return r[1]; });
+  $("#footer-social").innerHTML = redes.map(function (r) {
+    return '<a href="' + esc(r[1]) + '" target="_blank" rel="noopener">' + r[0] + "</a>";
+  }).join('<span aria-hidden="true">✦</span>');
+
+  if (D.amazonAssociate) {
+    var an = $("#amazon-note");
+    an.textContent = S.amazonAviso;
+    an.hidden = false;
+    var av = document.querySelector('[data-i18n="avisoCompleto"]');
+    if (av) av.textContent += " " + S.amazonAviso;
   }
 
   /* ---------- Vídeo da abertura (versão de computador ou de celular) ---------- */

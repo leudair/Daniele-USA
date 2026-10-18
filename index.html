@@ -6,11 +6,38 @@
   <title>Escolhas da Dana · @onlydaninha30</title>
   <meta name="description" content="Moda, beleza, viagens e momentos da rotina: uma seleção de indicações de Danielly Matos Dana, do Instagram @onlydaninha30.">
   <meta name="theme-color" content="#FBF6F2">
+  <!-- Ao trocar o domínio, atualize https://escolhas-da-dana.vercel.app nestas linhas, em robots.txt, sitemap.xml e siteUrl em js/dados.js -->
+  <link rel="canonical" href="https://escolhas-da-dana.vercel.app/">
+  <link rel="alternate" hreflang="pt-BR" href="https://escolhas-da-dana.vercel.app/?lang=pt">
+  <link rel="alternate" hreflang="en" href="https://escolhas-da-dana.vercel.app/?lang=en">
+  <link rel="alternate" hreflang="x-default" href="https://escolhas-da-dana.vercel.app/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Escolhas da Dana">
-  <meta property="og:description" content="Um pouco do meu mundo. Uma seleção para o seu.">
+  <meta property="og:site_name" content="Escolhas da Dana">
+  <meta property="og:title" content="Escolhas da Dana · @onlydaninha30">
+  <meta property="og:description" content="Um pouco do meu mundo. Uma seleção para o seu. · A little of my world. A selection for yours.">
+  <meta property="og:url" content="https://escolhas-da-dana.vercel.app/">
   <meta property="og:locale" content="pt_BR">
-  <meta property="og:image" content="assets/img/dana-hero.webp">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:image" content="https://escolhas-da-dana.vercel.app/assets/img/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Dana dentro de um arco dourado, com o título Escolhas da Dana">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://escolhas-da-dana.vercel.app/assets/img/og-image.jpg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Escolhas da Dana",
+    "url": "https://escolhas-da-dana.vercel.app/",
+    "inLanguage": ["pt-BR", "en"],
+    "author": {
+      "@type": "Person",
+      "name": "Danielly Matos Dana",
+      "sameAs": ["https://www.instagram.com/onlydaninha30/"]
+    }
+  }
+  </script>
   <link rel="preload" as="image" href="assets/img/hero-video-poster-mobile.webp" media="(max-width: 899px)">
   <link rel="preload" as="image" href="assets/img/hero-video-poster.webp" media="(min-width: 900px)">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2232%22 fill=%22%2324121B%22/%3E%3Ccircle cx=%2232%22 cy=%2232%22 r=%2227%22 fill=%22none%22 stroke=%22%23D9BC8A%22 stroke-width=%221.5%22/%3E%3Ctext x=%2232%22 y=%2243%22 font-family=%22Georgia,serif%22 font-style=%22italic%22 font-size=%2232%22 fill=%22%23E9D3A8%22 text-anchor=%22middle%22%3ED%3C/text%3E%3C/svg%3E">
@@ -111,11 +138,34 @@
       <div class="filters-wrap reveal">
         <p class="filters-label" id="filters-label" data-i18n="filtrosTitulo">Encontre por categoria</p>
         <div class="filters" id="filters" role="group" aria-labelledby="filters-label"></div>
+        <div class="filters-extra">
+          <div class="pill-group" id="collections-wrap">
+            <span class="pill-label" id="collections-label" data-i18n="colecoesTitulo">Coleções</span>
+            <div class="pills" id="collections" role="group" aria-labelledby="collections-label"></div>
+          </div>
+          <div class="pill-group" id="market-wrap">
+            <span class="pill-label" id="market-label" data-i18n="mercadoTitulo">Onde comprar</span>
+            <div class="pills pills-segmented" id="market" role="group" aria-labelledby="market-label"></div>
+          </div>
+        </div>
       </div>
 
+      <p class="empty-note" id="empty-note" hidden data-i18n="nenhumProduto">Nenhum produto com esses filtros.</p>
       <ul class="track" id="track" tabindex="0" aria-label="Produtos indicados. Use as setas do teclado para navegar." data-i18n-aria="ariaTrack"></ul>
 
       <p class="note-affiliate" data-i18n="avisoCurto">Alguns links são de afiliados: posso receber comissão pelas compras. <a href="#como-comprar">Saiba mais</a></p>
+    </section>
+
+    <!-- Vitrines completas (Amazon Storefront, LTK, ShopMy) -->
+    <section class="storefronts" id="vitrines" aria-labelledby="vitrines-title" hidden>
+      <div class="section-head section-head-center reveal">
+        <div>
+          <p class="eyebrow eyebrow-center"><span data-i18n="vitrinesKicker">Tudo num só lugar</span></p>
+          <h2 id="vitrines-title" data-i18n="vitrinesTitulo">Minhas <em>vitrines</em></h2>
+          <p class="section-sub" data-i18n="vitrinesTexto">As listas completas de favoritos em cada plataforma.</p>
+        </div>
+      </div>
+      <ul class="storefront-list" id="vitrines-list"></ul>
     </section>
 
     <!-- 4. Destaque da vez -->
@@ -203,17 +253,32 @@
     </section>
   </main>
 
+  <!-- Parcerias com marcas -->
+  <section class="parcerias" id="parcerias" aria-labelledby="parcerias-title">
+    <p class="eyebrow eyebrow-center"><span data-i18n="parceriasKicker">Marcas</span></p>
+    <h2 id="parcerias-title" data-i18n="parceriasTitulo">Parcerias <em>com a Dana</em></h2>
+    <p data-i18n="parceriasTexto">Para propostas de parceria, campanhas e publicidade, entre em contato.</p>
+    <div class="parcerias-actions" id="parcerias-actions"></div>
+  </section>
+
   <footer class="site-footer">
     <p class="footer-mark">Escolhas <em>da</em> Dana</p>
+    <p class="footer-social" id="footer-social"></p>
     <p class="ornament" aria-hidden="true">✦</p>
     <p data-i18n="rodapeAviso">Alguns links são de afiliados. Compras, pagamentos, entregas e trocas são feitos diretamente nas lojas parceiras.</p>
+    <p class="amazon-note" id="amazon-note" hidden></p>
     <p class="footer-links">
       <a href="privacidade.html" data-i18n="rodapePrivacidade">Privacidade</a>
+      <a href="termos.html" data-i18n="rodapeTermos">Termos</a>
+      <a href="#parcerias" data-i18n="rodapeParcerias">Parcerias</a>
       <a href="https://www.instagram.com/onlydaninha30/" target="_blank" rel="noopener" data-ig>Instagram</a>
     </p>
     <p class="footer-copy">© <span id="ano">2026</span> Danielly Matos Dana</p>
   </footer>
 
+  <!-- Vercel Web Analytics (ativar em Vercel → projeto → Analytics) -->
+  <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+  <script defer src="/_vercel/insights/script.js"></script>
   <script src="js/dados.js"></script>
   <script src="js/i18n.js"></script>
   <script src="js/app.js"></script>
