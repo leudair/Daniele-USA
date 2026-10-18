@@ -56,8 +56,12 @@
     return '<div class="ph"><span class="ph-mark">' + esc(mark || "") + '</span><span class="ph-label">' + esc(label) + "</span></div>";
   }
 
-  function img(src, alt, eager) {
-    return '<img src="' + esc(src) + '" alt="' + esc(alt) + '"' +
+  // Para "foto.webp", usa também "foto-640.webp" no celular (gerada junto).
+  function img(src, alt, eager, sizes) {
+    var set = /\.webp$/.test(src) && !/-640\.webp$/.test(src)
+      ? ' srcset="' + esc(src.replace(/\.webp$/, "-640.webp")) + ' 640w, ' + esc(src) + ' 1400w" sizes="' + (sizes || "(min-width: 900px) 50vw, 100vw") + '"'
+      : "";
+    return '<img src="' + esc(src) + '"' + set + ' alt="' + esc(alt) + '"' +
       (eager ? ' fetchpriority="high"' : ' loading="lazy"') + ' decoding="async">';
   }
 
@@ -116,12 +120,14 @@
   var catsComProduto = D.categorias.filter(function (c) {
     return produtos.some(function (p) { return p.categoria === c.id; });
   });
-  var chips = [{ id: "todos", nome: S.todos }].concat(catsComProduto.map(function (c) {
-    return { id: c.id, nome: t(c.nome) };
+  var chips = [{ id: "todos", nome: S.todos, imagem: D.imagemTodos }].concat(catsComProduto.map(function (c) {
+    return { id: c.id, nome: t(c.nome), imagem: c.imagem };
   }));
   filtersEl.innerHTML = chips.map(function (c) {
     return '<button type="button" class="chip" data-filter="' + esc(c.id) + '" aria-pressed="' +
-      (c.id === "todos") + '">' + esc(c.nome) + "</button>";
+      (c.id === "todos") + '">' +
+      '<span class="chip-photo corners">' + (c.imagem ? img(c.imagem, "", false, "(min-width: 900px) 18vw, 40vw") : placeholder("", c.nome.charAt(0))) + "</span>" +
+      '<span class="chip-name">' + esc(c.nome) + "</span></button>";
   }).join("");
 
   function setFiltro(id) {

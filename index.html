@@ -5,11 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Escolhas da Dana · @onlydaninha30</title>
   <meta name="description" content="Moda, beleza, viagens e momentos da rotina: uma seleção de indicações de Danielly Matos Dana, do Instagram @onlydaninha30.">
-  <meta name="theme-color" content="#24121B">
+  <meta name="theme-color" content="#FBF6F2">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Escolhas da Dana">
   <meta property="og:description" content="Um pouco do meu mundo. Uma seleção para o seu.">
   <meta property="og:locale" content="pt_BR">
+  <meta property="og:image" content="assets/img/dana-hero.webp">
+  <link rel="preload" as="image" href="assets/img/dana-hero-640.webp" media="(max-width: 899px)">
+  <link rel="preload" as="image" href="assets/img/home-fundo.webp" media="(min-width: 900px)">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2232%22 fill=%22%2324121B%22/%3E%3Ccircle cx=%2232%22 cy=%2232%22 r=%2227%22 fill=%22none%22 stroke=%22%23D9BC8A%22 stroke-width=%221.5%22/%3E%3Ctext x=%2232%22 y=%2243%22 font-family=%22Georgia,serif%22 font-style=%22italic%22 font-size=%2232%22 fill=%22%23E9D3A8%22 text-anchor=%22middle%22%3ED%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,6 +41,7 @@
 
     <!-- 1. Apresentação -->
     <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-bg" aria-hidden="true"></div>
       <div class="hero-frame" aria-hidden="true"></div>
       <div class="hero-inner">
         <div class="hero-visual">
@@ -59,7 +63,7 @@
           <p class="hero-bio" data-i18n="heroBio">Sou a Dana. Por aqui você encontra moda, beleza, viagens e os pequenos momentos da rotina que divido no Instagram.</p>
           <div class="hero-actions">
             <a class="btn btn-gold" href="#indicacoes" data-i18n="heroCta">Explorar minhas indicações</a>
-            <a class="link-line link-light" href="https://www.instagram.com/onlydaninha30/" target="_blank" rel="noopener" data-ig data-i18n="heroIg">Me acompanhe no Instagram</a>
+            <a class="link-line" href="https://www.instagram.com/onlydaninha30/" target="_blank" rel="noopener" data-ig data-i18n="heroIg">Me acompanhe no Instagram</a>
           </div>
         </div>
       </div>
@@ -159,6 +163,9 @@
       <div class="comprar-head reveal">
         <p class="eyebrow"><span data-i18n="comprarKicker">Simples assim</span></p>
         <h2 id="comprar-title" data-i18n="comprarTitulo">Como <em>comprar</em></h2>
+        <figure class="comprar-photo corners">
+          <img src="assets/img/como-comprar.webp" srcset="assets/img/como-comprar-640.webp 640w, assets/img/como-comprar.webp 1400w" sizes="(min-width: 900px) 36vw, 100vw" alt="Celular, café e necessaire rosa sobre a mesa" loading="lazy" decoding="async">
+        </figure>
       </div>
       <ol class="steps reveal">
         <li><span class="step-n" aria-hidden="true">01</span><span data-i18n="passo1">Escolha seu produto</span></li>
@@ -170,6 +177,7 @@
 
     <!-- 8. Encerramento -->
     <section class="fechamento" aria-labelledby="fechamento-title">
+      <div class="fechamento-bg" aria-hidden="true"></div>
       <div class="fechamento-frame" aria-hidden="true"></div>
       <div class="seal seal-static" aria-hidden="true">
         <svg viewBox="0 0 120 120">

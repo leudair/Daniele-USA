@@ -15,24 +15,25 @@ window.DANA = {
   // Fotos da Dana. Deixe "" para mostrar o espaço reservado.
   // Ex.: "assets/img/dana-hero.webp"
   fotos: {
-    hero: "",
-    destaque: "",
-    sobre1: "",
-    sobre2: ""
+    hero: "assets/img/dana-hero.webp",
+    destaque: "assets/img/destaque.webp",
+    sobre1: "assets/img/dana-sobre.webp",
+    sobre2: "assets/img/sobre-detalhe.webp"
   },
   fotosAlt: {
     hero: "Danielly Matos Dana",
     destaque: "Detalhe do produto em destaque",
     sobre1: "Danielly Matos Dana em viagem",
-    sobre2: "Danielly Matos Dana em um momento da rotina"
+    sobre2: "Óculos de sol de tartaruga e argolas douradas sobre tecido rosa"
   },
 
   // Só aparecem no filtro as categorias que tiverem produtos visíveis.
+  imagemTodos: "assets/img/indicacoes.webp",
   categorias: [
-    { id: "beleza", nome: { pt: "Beleza", en: "Beauty" } },
-    { id: "moda", nome: { pt: "Moda e acessórios", en: "Fashion & accessories" } },
-    { id: "casa", nome: { pt: "Casa e rotina", en: "Home & routine" } },
-    { id: "viagem", nome: { pt: "Viagem", en: "Travel" } }
+    { id: "beleza", nome: { pt: "Beleza", en: "Beauty" }, imagem: "assets/img/cat-beleza.webp" },
+    { id: "moda", nome: { pt: "Moda e acessórios", en: "Fashion & accessories" }, imagem: "assets/img/cat-moda.webp" },
+    { id: "casa", nome: { pt: "Casa e rotina", en: "Home & routine" }, imagem: "assets/img/cat-casa.webp" },
+    { id: "viagem", nome: { pt: "Viagem", en: "Travel" }, imagem: "assets/img/cat-viagem.webp" }
   ],
 
   lojas: {
@@ -123,8 +124,8 @@ window.DANA = {
    *  produto — opcional, slug de um produto cadastrado
    */
   instagramPosts: [
-    { capa: "", legenda: "Look do dia", link: "", produto: "bolsa-transversal", exemplo: true },
-    { capa: "", legenda: "Arrumando a mala", link: "", produto: "mala-de-bordo", exemplo: true },
-    { capa: "", legenda: "Rotina de beleza", link: "", produto: "escova-secadora", exemplo: true }
+    { capa: "assets/img/insta-1.webp", legenda: "Detalhes em dourado", link: "", produto: "argolas-douradas" },
+    { capa: "assets/img/insta-2.webp", legenda: "Look do dia", link: "", produto: "" },
+    { capa: "assets/img/insta-3.webp", legenda: "Tons de rosa", link: "", produto: "bolsa-transversal" }
   ]
 };
