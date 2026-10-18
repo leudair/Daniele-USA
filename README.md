@@ -39,12 +39,12 @@ Use as fotos originais, sem interface do Instagram, textos de Stories ou barras 
 
 Tudo em `js/dados.js`:
 
-- **Lojas:** `amazon`, `ltk`, `shopmy`, `sephora`, `ulta`, `nordstrom`, `target`, `revolve`, `walmart` (🇺🇸) e `amazonbr`, `shopee` (🇧🇷). O filtro "Onde comprar" aparece sozinho quando há produtos dos dois países.
+- **Lojas:** `amazon`, `ltk`, `shopmy`, `sephora` (🇺🇸) e `shopee` (🇧🇷). O filtro "Onde comprar" aparece sozinho quando há produtos dos dois países.
 - **Coleções:** `colecoes` (ex.: Amazon Finds, Under $50). Em cada produto: `colecoes: ["amazon-finds"]`.
 - **Vitrines completas:** `vitrines` (Amazon Storefront, LTK, ShopMy). Preencha `url`; vazias somem quando `mostrarExemplos: false`.
 - **Compre o look:** em `instagramPosts`, `produtos: ["slug1", "slug2"]`.
 - **Aviso Amazon (EUA):** `amazonAssociate: true` mostra "As an Amazon Associate I earn from qualifying purchases."
-- **Redes / parcerias:** `redes.tiktok`, `redes.pinterest`, `emailParcerias`.
+- **Redes / parcerias:** `redes.tiktok`, `redes.pinterest` (o ícone aparece apagado até ter link), `emailParcerias`.
 - **Medição:** ative *Analytics* no painel da Vercel (projeto escolhas-da-dana). Para Google Analytics, preencha `ga4Id`. Cliques em links de afiliado são enviados como evento `affiliate_click`.
 - **Domínio:** ao trocar, atualize `siteUrl` (dados.js), as tags `canonical`/`og:` do `index.html`, `robots.txt` e `sitemap.xml`.
 

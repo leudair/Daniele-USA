@@ -9,7 +9,7 @@ window.DANA = {
   // Endereço oficial do site (usado em compartilhamento e Google). Troque quando tiver domínio próprio.
   siteUrl: "https://escolhas-da-dana.vercel.app",
 
-  // Outras redes. Deixe "" para esconder.
+  // Outras redes. O ícone aparece no rodapé mesmo sem link (fica como "em breve").
   redes: {
     tiktok: "",
     pinterest: ""
@@ -75,18 +75,12 @@ window.DANA = {
    * Lojas. mercado: "us" (Estados Unidos) ou "br" (Brasil).
    */
   lojas: {
-    amazon:    { nome: "Amazon", mercado: "us", botao: { pt: "Ver na Amazon", en: "Shop on Amazon" } },
-    ltk:       { nome: "LTK", mercado: "us", botao: { pt: "Ver no LTK", en: "Shop on LTK" } },
-    shopmy:    { nome: "ShopMy", mercado: "us", botao: { pt: "Ver no ShopMy", en: "Shop on ShopMy" } },
-    sephora:   { nome: "Sephora", mercado: "us", botao: { pt: "Ver na Sephora", en: "Shop at Sephora" } },
-    ulta:      { nome: "Ulta Beauty", mercado: "us", botao: { pt: "Ver na Ulta", en: "Shop at Ulta" } },
-    nordstrom: { nome: "Nordstrom", mercado: "us", botao: { pt: "Ver na Nordstrom", en: "Shop at Nordstrom" } },
-    target:    { nome: "Target", mercado: "us", botao: { pt: "Ver na Target", en: "Shop at Target" } },
-    revolve:   { nome: "Revolve", mercado: "us", botao: { pt: "Ver na Revolve", en: "Shop at Revolve" } },
-    walmart:   { nome: "Walmart", mercado: "us", botao: { pt: "Ver no Walmart", en: "Shop at Walmart" } },
-    amazonbr:  { nome: "Amazon Brasil", mercado: "br", botao: { pt: "Ver na Amazon", en: "Shop on Amazon Brazil" } },
-    shopee:    { nome: "Shopee", mercado: "br", botao: { pt: "Ver na Shopee", en: "Shop on Shopee" } },
-    outra:     { nome: { pt: "Loja parceira", en: "Partner store" }, mercado: "us", botao: { pt: "Ver na loja", en: "Shop now" } }
+    amazon:  { nome: "Amazon", mercado: "us", botao: { pt: "Ver na Amazon", en: "Shop on Amazon" } },
+    ltk:     { nome: "LTK", mercado: "us", botao: { pt: "Ver no LTK", en: "Shop on LTK" } },
+    shopmy:  { nome: "ShopMy", mercado: "us", botao: { pt: "Ver no ShopMy", en: "Shop on ShopMy" } },
+    sephora: { nome: "Sephora", mercado: "us", botao: { pt: "Ver na Sephora", en: "Shop at Sephora" } },
+    shopee:  { nome: "Shopee", mercado: "br", botao: { pt: "Ver na Shopee", en: "Shop on Shopee" } },
+    outra:   { nome: { pt: "Loja parceira", en: "Partner store" }, mercado: "us", botao: { pt: "Ver na loja", en: "Shop now" } }
   },
 
   /*
@@ -95,8 +89,7 @@ window.DANA = {
    *  nome      — nome curto
    *  frase     — uma frase sobre a utilidade (sem "eu uso"/"eu testei" sem aprovação da Dana)
    *  categoria — id de uma categoria acima
-   *  loja      — uma das lojas acima (amazon, ltk, shopmy, sephora, ulta, nordstrom, target,
-   *              revolve, walmart, amazonbr, shopee, outra)
+   *  loja      — uma das lojas acima (amazon, ltk, shopmy, sephora, shopee, outra)
    *  lojaNome  — opcional, nome da loja quando loja = "outra"
    *  mercado   — opcional, "us" ou "br" (se vazio, usa o da loja)
    *  colecoes  — opcional, ids das coleções acima. Ex.: ["amazon-finds", "ate-50"]
@@ -115,7 +108,7 @@ window.DANA = {
       slug: "escova-secadora",
       nome: { pt: "Escova secadora", en: "Hot air brush" },
       frase: { pt: "Seca e modela os fios ao mesmo tempo, encurtando a rotina do cabelo.", en: "Dries and styles your hair at the same time, cutting down your hair routine." },
-      categoria: "beleza", loja: "ulta", colecoes: ["presentes"], link: "", imagem: "", exemplo: true
+      categoria: "beleza", loja: "sephora", colecoes: ["presentes"], link: "", imagem: "", exemplo: true
     },
     {
       slug: "kit-pinceis",
@@ -145,13 +138,13 @@ window.DANA = {
       slug: "organizador-acrilico",
       nome: { pt: "Organizador acrílico", en: "Acrylic organizer" },
       frase: { pt: "Deixa maquiagem e skincare à vista e em ordem sobre a bancada.", en: "Keeps makeup and skincare visible and tidy on your vanity." },
-      categoria: "casa", loja: "amazonbr", colecoes: [], link: "", imagem: "", exemplo: true
+      categoria: "casa", loja: "shopee", colecoes: [], link: "", imagem: "", exemplo: true
     },
     {
       slug: "garrafa-termica",
       nome: { pt: "Garrafa térmica", en: "Insulated bottle" },
       frase: { pt: "Mantém a bebida na temperatura certa durante o dia fora de casa.", en: "Keeps your drink at the right temperature all day on the go." },
-      categoria: "casa", loja: "target", colecoes: ["ate-50", "viagem"], link: "", imagem: "", exemplo: true
+      categoria: "casa", loja: "amazon", colecoes: ["ate-50", "viagem"], link: "", imagem: "", exemplo: true
     },
     {
       slug: "mala-de-bordo",

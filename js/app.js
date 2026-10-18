@@ -404,11 +404,15 @@
   }
   $("#parcerias-actions").innerHTML = acoes;
 
-  var redes = [["Instagram", D.instagram]].concat([["TikTok", (D.redes || {}).tiktok], ["Pinterest", (D.redes || {}).pinterest]])
-    .filter(function (r) { return r[1]; });
+  // Ícones das redes no rodapé. Sem link, o ícone aparece apagado como "em breve".
+  var ICONES = {"Instagram": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" aria-hidden=\"true\"><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><circle cx=\"12\" cy=\"12\" r=\"4.2\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"/><circle cx=\"17.4\" cy=\"6.6\" r=\"1\" fill=\"currentColor\"/></svg>", "TikTok": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" aria-hidden=\"true\"><path d=\"M14.5 3c.4 2.3 1.9 3.9 4.5 4.2v3.1c-1.6 0-3.1-.5-4.4-1.4v6.1c0 3.3-2.6 5.5-5.6 5.5-3 0-5.4-2.4-5.4-5.4 0-3.2 2.8-5.7 6.2-5.3v3.2c-1.5-.4-3 .6-3 2.1 0 1.2 1 2.2 2.2 2.2 1.3 0 2.3-1 2.3-2.4V3h3.2z\" fill=\"currentColor\"/></svg>", "Pinterest": "<svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" aria-hidden=\"true\"><path d=\"M12 2.5a9.5 9.5 0 0 0-3.5 18.3c-.1-.8-.2-2 0-2.9l1.2-5s-.3-.6-.3-1.5c0-1.4.8-2.5 1.8-2.5.9 0 1.3.7 1.3 1.5 0 .9-.6 2.2-.9 3.4-.2 1 .5 1.9 1.6 1.9 1.9 0 3.3-2 3.3-4.9 0-2.5-1.8-4.3-4.4-4.3-3 0-4.8 2.3-4.8 4.6 0 .9.4 1.9.8 2.4.1.1.1.2.1.3l-.3 1.2c0 .2-.2.3-.4.2-1.3-.6-2.1-2.5-2.1-4.1 0-3.3 2.4-6.4 7-6.4 3.7 0 6.5 2.6 6.5 6.1 0 3.7-2.3 6.6-5.5 6.6-1.1 0-2.1-.6-2.4-1.2l-.7 2.5c-.2.9-.9 2.1-1.3 2.8A9.5 9.5 0 1 0 12 2.5z\" fill=\"currentColor\"/></svg>"};
+  var redes = [["Instagram", D.instagram], ["TikTok", (D.redes || {}).tiktok], ["Pinterest", (D.redes || {}).pinterest]];
   $("#footer-social").innerHTML = redes.map(function (r) {
-    return '<a href="' + esc(r[1]) + '" target="_blank" rel="noopener">' + r[0] + "</a>";
-  }).join('<span aria-hidden="true">✦</span>');
+    if (r[1]) {
+      return '<a class="social" href="' + esc(r[1]) + '" target="_blank" rel="noopener" aria-label="' + r[0] + '">' + ICONES[r[0]] + "</a>";
+    }
+    return '<span class="social is-soon" title="' + r[0] + " · " + esc(S.emBreve) + '" aria-label="' + r[0] + " (" + esc(S.emBreve) + ')" role="img">' + ICONES[r[0]] + "</span>";
+  }).join("");
 
   if (D.amazonAssociate) {
     var an = $("#amazon-note");

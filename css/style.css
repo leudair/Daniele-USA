@@ -1164,3 +1164,15 @@ h1, h2 { text-wrap: balance; }
 .footer-links { flex-wrap: wrap; gap: 4px 24px; }
 .storefronts { padding-top: 0; }
 .storefront h3 { min-height: 2.1em; display: flex; align-items: center; justify-content: center; line-height: 1.05; }
+
+/* Ícones das redes no rodapé */
+.footer-social { gap: 12px; margin: 6px auto 14px; }
+.social {
+  display: inline-grid; place-items: center;
+  width: 44px; height: 44px; border-radius: 50%;
+  border: 1px solid rgba(217, 188, 138, .55);
+  color: var(--gold-pale);
+  transition: background-color .3s, color .3s, border-color .3s;
+}
+a.social:hover { background: var(--metal-brushed); color: #3A1A26; border-color: #9C7744; }
+.social.is-soon { opacity: .45; cursor: default; }
