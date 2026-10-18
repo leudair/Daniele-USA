@@ -61,8 +61,8 @@
       (eager ? ' fetchpriority="high"' : ' loading="lazy"') + ' decoding="async">';
   }
 
-  function buyButton(p, label, extraClass) {
-    var cls = "btn btn-primary " + (extraClass || "");
+  function buyButton(p, label, variant) {
+    var cls = "btn " + (variant || "btn-primary");
     if (!p.link) {
       return '<span class="' + cls + ' is-disabled" aria-disabled="true">' + esc(S.linkEmBreve) + "</span>";
     }
@@ -96,17 +96,21 @@
   var toggleBtn = $("#toggle-grid");
   var filtroAtivo = "todos";
 
-  track.innerHTML = produtos.map(function (p) {
-    var foto = p.imagem ? img(p.imagem, p.nome) : placeholder(S.fotoProduto, t(p.nome).charAt(0));
+  function pad2(n) { return (n < 10 ? "0" : "") + n; }
+
+  track.innerHTML = produtos.map(function (p, i) {
+    var foto = p.imagem ? img(p.imagem, t(p.nome)) : placeholder(S.fotoProduto, t(p.nome).charAt(0));
     return '<li class="card" id="produto-' + esc(p.slug) + '" data-cat="' + esc(p.categoria) + '" tabindex="-1">' +
-      '<figure class="card-photo">' + foto +
+      '<div class="card-frame">' +
+      '<figure class="card-photo corners">' + foto +
       (p.exemplo ? '<span class="badge">' + esc(S.exemplo) + "</span>" : "") + "</figure>" +
       '<div class="card-body">' +
-      '<p class="card-store">' + esc(lojaNome(p)) + (catNome[p.categoria] ? " · " + esc(catNome[p.categoria]) : "") + "</p>" +
+      '<p class="card-meta"><span class="card-n">Nº ' + pad2(i + 1) + '</span><span class="card-store">' + esc(lojaNome(p)) + "</span></p>" +
       '<h3 class="card-name">' + esc(t(p.nome)) + "</h3>" +
+      (catNome[p.categoria] ? '<p class="card-cat">' + esc(catNome[p.categoria]) + "</p>" : "") +
       '<p class="card-text">' + esc(t(p.frase)) + "</p>" +
-      buyButton(p, lojaBotao(p), "btn-card") +
-      "</div></li>";
+      buyButton(p, lojaBotao(p), "btn-outline btn-card") +
+      "</div></div></li>";
   }).join("");
 
   var catsComProduto = D.categorias.filter(function (c) {
@@ -217,11 +221,8 @@
     $("#destaque-loja").textContent = lojaNome(destaque);
     $("#destaque-nome").textContent = t(destaque.nome) + (destaque.exemplo ? " (" + S.exemplo + ")" : "");
     $("#destaque-frase").textContent = t(destaque.frase);
-    var cta = destaque.link
-      ? buyButton(destaque, S.destaqueCta || "Conhecer o produto")
-      : buyButton(destaque, "");
-    $("#destaque-actions").innerHTML = cta +
-      '<a class="link-line" href="#produto/' + esc(destaque.slug) + '">' + esc(S.verNaVitrine) + "</a>";
+    $("#destaque-actions").innerHTML = buyButton(destaque, S.destaqueCta, "btn-gold") +
+      '<a class="link-line link-light" href="#produto/' + esc(destaque.slug) + '">' + esc(S.verNaVitrine) + "</a>";
   }
 
   /* ---------- Do Instagram para cá ---------- */
@@ -246,6 +247,19 @@
         (prod ? '<a class="link-line link-accent" href="#produto/' + esc(prod.slug) + '">' + esc(S.encontrarProduto) + "</a>" : "") +
         "</p></li>";
     }).join("");
+  }
+
+  /* ---------- Entrada suave das seções ---------- */
+  var reveals = document.querySelectorAll(".reveal");
+  if (reduceMotion || !("IntersectionObserver" in window)) {
+    reveals.forEach(function (el) { el.classList.add("is-in"); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); }
+      });
+    }, { rootMargin: "0px 0px -8% 0px" });
+    reveals.forEach(function (el) { io.observe(el); });
   }
 
   /* ---------- Início ---------- */
