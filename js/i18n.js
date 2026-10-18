@@ -1,8 +1,8 @@
 /*
  * Textos da interface por idioma.
- * O HTML já traz o português. Para a versão em inglês, preencha `en` com as mesmas
- * chaves dos atributos data-i18n do index.html e as chaves de interface abaixo,
- * e acesse o site com ?lang=en.
+ * O HTML já traz o português; `en` traz a versão em inglês das mesmas chaves
+ * (atributos data-i18n / data-i18n-aria do index.html + textos gerados pelo app.js).
+ * O idioma vem de ?lang=pt|en, da escolha salva no botão PT | EN ou do idioma do navegador.
  */
 window.I18N = {
   pt: {
@@ -21,5 +21,63 @@ window.I18N = {
     abreNovaAba: "(abre em nova aba)",
     previa: "Prévia · itens “Exemplo” são demonstrativos"
   },
-  en: {}
+  en: {
+    skip: "Skip to recommendations",
+    navIndicacoes: "Picks",
+    navSobre: "About",
+    heroTitulo: "A little of my world. <em>A selection for yours.</em>",
+    heroBio: "I’m Dana. Here you’ll find fashion, beauty, travel and the little everyday moments I share on Instagram.",
+    heroCta: "Explore my picks",
+    heroIg: "Follow me on Instagram",
+    vitrineKicker: "The selection",
+    vitrineTitulo: "Dana’s <em>picks</em>",
+    filtrosTitulo: "Shop by category",
+    avisoCurto: "Some links are affiliate links: I may earn a commission on purchases. <a href=\"#como-comprar\">Learn more</a>",
+    destaqueKicker: "Featured now",
+    destaqueTitulo: "Notice <em>the details</em>",
+    sobreKicker: "About",
+    sobreTitulo: "Behind <em>the picks</em>",
+    sobreTexto1: "My Instagram brings together a little of everything that inspires me: the outfit of the day, a beauty ritual, a trip, a simple everyday moment.",
+    sobreTexto2: "This page was created to gather, in one place, the recommendations you see there.",
+    temaModa: "Fashion",
+    temaBeleza: "Beauty",
+    temaViagens: "Travel",
+    temaRotina: "Everyday life",
+    instaTitulo: "From Instagram <em>to here</em>",
+    comprarKicker: "Simple as that",
+    comprarTitulo: "How <em>to shop</em>",
+    passo1: "Choose your product",
+    passo2: "Go to the recommended store",
+    passo3: "Complete your purchase there",
+    avisoCompleto: "Some links on this page are affiliate links. I may earn a commission on purchases made through them. Payment, shipping and any returns are handled by the store where you complete your purchase.",
+    fechamentoTitulo: "More picks, travel and moments <em>on Instagram.</em>",
+    fechamentoCta: "Follow @onlydaninha30",
+    rodapeAviso: "Some links are affiliate links. Purchases, payments, shipping and returns are handled directly by partner stores.",
+    rodapePrivacidade: "Privacy",
+    todos: "All",
+    verTodos: "View all",
+    verCarrossel: "View as carousel",
+    linkEmBreve: "Link coming soon",
+    exemplo: "Sample",
+    fotoDana: "Dana’s photo",
+    fotoProduto: "Product photo",
+    capaPost: "Post cover",
+    verInstagram: "View on Instagram",
+    encontrarProduto: "Find this product",
+    verNaVitrine: "See in the shop",
+    destaqueCta: "Discover the product",
+    abreNovaAba: "(opens in a new tab)",
+    previa: "Preview · “Sample” items are placeholders",
+    ariaHome: "Escolhas da Dana, back to top",
+    ariaNav: "Main",
+    ariaVideo: "Dana inside a golden arch presenting her picks",
+    ariaPrev: "Previous products",
+    ariaNext: "Next products",
+    ariaTrack: "Recommended products. Use the arrow keys to browse.",
+    ariaTemas: "Topics",
+    ariaIdioma: "Language",
+    selo: "ESCOLHAS DA DANA ✦ PERSONAL SELECTION ✦",
+    metaTitle: "Escolhas da Dana · Dana’s Picks · @onlydaninha30",
+    metaDesc: "Fashion, beauty, travel and everyday moments: a curated selection of recommendations by Danielly Matos Dana (@onlydaninha30)."
+  }
 };

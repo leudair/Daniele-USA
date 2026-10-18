@@ -2,8 +2,13 @@
   "use strict";
 
   var D = window.DANA;
+  /* Idioma: ?lang= na URL > escolha salva > idioma do navegador > português */
+  var LANGS = ["pt", "en"];
   var params = new URLSearchParams(location.search);
-  var lang = params.get("lang") || "pt";
+  var saved = null;
+  try { saved = localStorage.getItem("dana-lang"); } catch (e) {}
+  var browser = (navigator.language || "").toLowerCase().indexOf("pt") === 0 ? "pt" : "en";
+  var lang = [params.get("lang"), saved, browser].filter(function (l) { return LANGS.indexOf(l) > -1; })[0] || "pt";
   var S = Object.assign({}, window.I18N.pt, window.I18N[lang] || {});
 
   function t(v) {
@@ -24,12 +29,35 @@
 
   /* ---------- Idioma ---------- */
   if (lang !== "pt") {
-    document.documentElement.lang = lang;
+    document.documentElement.lang = lang === "en" ? "en" : lang;
     document.querySelectorAll("[data-i18n]").forEach(function (el) {
       var key = el.getAttribute("data-i18n");
       if (S[key]) el.innerHTML = S[key];
     });
+    document.querySelectorAll("[data-i18n-aria]").forEach(function (el) {
+      var key = el.getAttribute("data-i18n-aria");
+      if (S[key]) el.setAttribute("aria-label", S[key]);
+    });
+    if (S.metaTitle) document.title = S.metaTitle;
+    var md = document.querySelector('meta[name="description"]');
+    if (md && S.metaDesc) md.setAttribute("content", S.metaDesc);
   }
+
+  // Botão PT | EN: salva a escolha e recarrega no idioma escolhido, mantendo a posição (#)
+  document.querySelectorAll("[data-set-lang]").forEach(function (b) {
+    var l = b.getAttribute("data-set-lang");
+    b.setAttribute("aria-pressed", String(l === lang));
+    b.addEventListener("click", function () {
+      if (l === lang) return;
+      try { localStorage.setItem("dana-lang", l); } catch (e) {}
+      var u = new URL(location.href);
+      u.searchParams.set("lang", l);
+      location.href = u.toString();
+    });
+  });
+  document.querySelectorAll('a[href="privacidade.html"]').forEach(function (a) {
+    a.href = "privacidade.html?lang=" + lang;
+  });
 
   /* ---------- Dados ---------- */
   var produtos = D.produtos.filter(function (p) {

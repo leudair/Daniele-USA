@@ -22,9 +22,9 @@ window.DANA = {
   },
   fotosAlt: {
     hero: "Danielly Matos Dana",
-    destaque: "Detalhe do produto em destaque",
-    sobre1: "Danielly Matos Dana em viagem",
-    sobre2: "Óculos de sol de tartaruga e argolas douradas sobre tecido rosa"
+    destaque: { pt: "Detalhe do produto em destaque", en: "Close-up of the featured product" },
+    sobre1: { pt: "Danielly Matos Dana em viagem", en: "Danielly Matos Dana traveling" },
+    sobre2: { pt: "Óculos de sol de tartaruga e argolas douradas sobre tecido rosa", en: "Tortoiseshell sunglasses and gold hoop earrings on pink fabric" }
   },
 
   // Só aparecem no filtro as categorias que tiverem produtos visíveis.
@@ -57,62 +57,62 @@ window.DANA = {
   produtos: [
     {
       slug: "necessaire-rosa",
-      nome: "Necessaire rosa",
-      frase: "Organiza maquiagem e itens de cuidado em compartimentos separados, na bolsa ou na mala.",
+      nome: { pt: "Necessaire rosa", en: "Pink makeup bag" },
+      frase: { pt: "Organiza maquiagem e itens de cuidado em compartimentos separados, na bolsa ou na mala.", en: "Keeps makeup and beauty essentials organized in separate compartments, in your purse or suitcase." },
       categoria: "viagem", loja: "amazon", link: "", imagem: "", exemplo: true
     },
     {
       slug: "escova-secadora",
-      nome: "Escova secadora",
-      frase: "Seca e modela os fios ao mesmo tempo, encurtando a rotina do cabelo.",
+      nome: { pt: "Escova secadora", en: "Hot air brush" },
+      frase: { pt: "Seca e modela os fios ao mesmo tempo, encurtando a rotina do cabelo.", en: "Dries and styles your hair at the same time, cutting down your hair routine." },
       categoria: "beleza", loja: "amazon", link: "", imagem: "", exemplo: true
     },
     {
       slug: "kit-pinceis",
-      nome: "Kit de pincéis",
-      frase: "Pincéis para base, pó e sombra reunidos em um estojo compacto.",
+      nome: { pt: "Kit de pincéis", en: "Makeup brush set" },
+      frase: { pt: "Pincéis para base, pó e sombra reunidos em um estojo compacto.", en: "Brushes for foundation, powder and eyeshadow in one compact case." },
       categoria: "beleza", loja: "shopee", link: "", imagem: "", exemplo: true
     },
     {
       slug: "oculos-de-sol",
-      nome: "Óculos de sol",
-      frase: "Armação leve que acompanha do look de praia ao passeio na cidade.",
+      nome: { pt: "Óculos de sol", en: "Sunglasses" },
+      frase: { pt: "Armação leve que acompanha do look de praia ao passeio na cidade.", en: "A lightweight frame that goes from beach looks to city strolls." },
       categoria: "moda", loja: "shopee", link: "", imagem: "", exemplo: true
     },
     {
       slug: "bolsa-transversal",
-      nome: "Bolsa transversal",
-      frase: "Tamanho certo para celular, carteira e batom, com as mãos livres.",
+      nome: { pt: "Bolsa transversal", en: "Crossbody bag" },
+      frase: { pt: "Tamanho certo para celular, carteira e batom, com as mãos livres.", en: "Just the right size for your phone, wallet and lipstick, hands-free." },
       categoria: "moda", loja: "amazon", link: "", imagem: "", exemplo: true
     },
     {
       slug: "argolas-douradas",
-      nome: "Argolas douradas",
-      frase: "Um acessório simples que deixa qualquer produção mais arrumada.",
+      nome: { pt: "Argolas douradas", en: "Gold hoop earrings" },
+      frase: { pt: "Um acessório simples que deixa qualquer produção mais arrumada.", en: "A simple accessory that makes any outfit look more polished." },
       categoria: "moda", loja: "outra", link: "", imagem: "", exemplo: true
     },
     {
       slug: "organizador-acrilico",
-      nome: "Organizador acrílico",
-      frase: "Deixa maquiagem e skincare à vista e em ordem sobre a bancada.",
+      nome: { pt: "Organizador acrílico", en: "Acrylic organizer" },
+      frase: { pt: "Deixa maquiagem e skincare à vista e em ordem sobre a bancada.", en: "Keeps makeup and skincare visible and tidy on your vanity." },
       categoria: "casa", loja: "shopee", link: "", imagem: "", exemplo: true
     },
     {
       slug: "garrafa-termica",
-      nome: "Garrafa térmica",
-      frase: "Mantém a bebida na temperatura certa durante o dia fora de casa.",
+      nome: { pt: "Garrafa térmica", en: "Insulated bottle" },
+      frase: { pt: "Mantém a bebida na temperatura certa durante o dia fora de casa.", en: "Keeps your drink at the right temperature all day on the go." },
       categoria: "casa", loja: "amazon", link: "", imagem: "", exemplo: true
     },
     {
       slug: "mala-de-bordo",
-      nome: "Mala de bordo",
-      frase: "Medidas de bagagem de mão, com rodinhas giratórias e divisórias internas.",
+      nome: { pt: "Mala de bordo", en: "Carry-on suitcase" },
+      frase: { pt: "Medidas de bagagem de mão, com rodinhas giratórias e divisórias internas.", en: "Carry-on size, with spinner wheels and interior dividers." },
       categoria: "viagem", loja: "amazon", link: "", imagem: "", exemplo: true
     },
     {
       slug: "travesseiro-de-pescoco",
-      nome: "Travesseiro de pescoço",
-      frase: "Apoio macio para voos e viagens longas de carro ou ônibus.",
+      nome: { pt: "Travesseiro de pescoço", en: "Travel neck pillow" },
+      frase: { pt: "Apoio macio para voos e viagens longas de carro ou ônibus.", en: "Soft support for flights and long car or bus rides." },
       categoria: "viagem", loja: "shopee", link: "", imagem: "", exemplo: true
     }
   ],
@@ -124,8 +124,8 @@ window.DANA = {
    *  produto — opcional, slug de um produto cadastrado
    */
   instagramPosts: [
-    { capa: "assets/img/insta-1.webp", legenda: "Detalhes em dourado", link: "", produto: "argolas-douradas" },
-    { capa: "assets/img/insta-2.webp", legenda: "Look do dia", link: "", produto: "" },
-    { capa: "assets/img/insta-3.webp", legenda: "Tons de rosa", link: "", produto: "bolsa-transversal" }
+    { capa: "assets/img/insta-1.webp", legenda: { pt: "Detalhes em dourado", en: "Golden details" }, link: "", produto: "argolas-douradas" },
+    { capa: "assets/img/insta-2.webp", legenda: { pt: "Look do dia", en: "Outfit of the day" }, link: "", produto: "" },
+    { capa: "assets/img/insta-3.webp", legenda: { pt: "Tons de rosa", en: "Shades of pink" }, link: "", produto: "bolsa-transversal" }
   ]
 };

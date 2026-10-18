@@ -44,6 +44,10 @@ Use as fotos originais, sem interface do Instagram, textos de Stories ou barras 
 - [ ] Fotos reais no lugar dos espaços reservados
 - [ ] Revisar `privacidade.html` se algum serviço de medição for adicionado
 
-## Inglês (futuro)
+## Português / Inglês
 
-Preencha `en` em `js/i18n.js` (chaves `data-i18n` do HTML + textos de interface) e use `{ pt, en }` nos textos de `dados.js`. Acesse com `?lang=en`.
+- Botão **PT | EN** no topo. A escolha fica salva no navegador.
+- Sem escolha salva: navegador em português abre em português; qualquer outro idioma abre em inglês.
+- Link direto por idioma: `?lang=en` ou `?lang=pt` (ex.: `/?lang=en#produto/necessaire-rosa`).
+- Textos fixos: `js/i18n.js` (`en`). Produtos, legendas e fotos: `{ pt: "...", en: "..." }` em `js/dados.js`.
+- Ao cadastrar um produto novo, preencha `nome` e `frase` nos dois idiomas.
