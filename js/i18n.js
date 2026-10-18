@@ -29,7 +29,8 @@ window.I18N = {
     emBreve: "Em breve",
     parceriasDm: "Enviar mensagem no Instagram",
     parceriasEmail: "Enviar e-mail",
-    amazonAviso: "Como associada da Amazon, recebo comissão por compras qualificadas."
+    amazonAviso: "Como associada da Amazon, recebo comissão por compras qualificadas.",
+    showcaseKicker: "Interativo"
   },
   en: {
     skip: "Skip to recommendations",
@@ -108,6 +109,9 @@ window.I18N = {
     rodapeTermos: "Terms",
     rodapeParcerias: "Work with me",
     amazonAviso: "As an Amazon Associate I earn from qualifying purchases.",
+    showcaseKicker: "Interactive",
+    showcaseTitulo: "Take a <em>closer look</em>",
+    showcaseTexto: "Drag to explore every detail.",
     metaTitle: "Escolhas da Dana · Dana’s Picks · @onlydaninha30",
     metaDesc: "Fashion, beauty, travel and everyday moments: a curated selection of recommendations by Danielly Matos Dana (@onlydaninha30)."
   }

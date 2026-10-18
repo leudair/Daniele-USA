@@ -442,6 +442,31 @@
     if (desktopMq.addEventListener) desktopMq.addEventListener("change", setHeroVideo);
   }
 
+  /* ---------- Peça interativa (thrine.app): carrega só quando a seção chega perto da tela ---------- */
+  var showcase = $("#showcase-embed");
+  if (showcase) {
+    var carregarEmbed = function () {
+      if (showcase.dataset.loaded) return;
+      showcase.dataset.loaded = "1";
+      var s = document.createElement("script");
+      s.type = "module";
+      s.src = "https://thrine.app/embed/v1.js";
+      document.head.appendChild(s);
+      var el = document.createElement("model-embed");
+      el.setAttribute("project", showcase.getAttribute("data-project"));
+      el.setAttribute("style", "display:block;width:100%;aspect-ratio:1092/774");
+      showcase.appendChild(el);
+    };
+    if ("IntersectionObserver" in window) {
+      var embedIo = new IntersectionObserver(function (entries) {
+        if (entries.some(function (e) { return e.isIntersecting; })) { carregarEmbed(); embedIo.disconnect(); }
+      }, { rootMargin: "600px 0px" });
+      embedIo.observe(showcase);
+    } else {
+      carregarEmbed();
+    }
+  }
+
   /* ---------- Malha dourada interativa na abertura (WebGL) ---------- */
   // Hexágonos dourados aparecem perto do cursor e em ondas a cada clique/toque.
   // Sem WebGL2 ou com "reduzir movimento" ativado, o site segue igual, sem o efeito.
