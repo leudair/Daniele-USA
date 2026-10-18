@@ -442,6 +442,44 @@
     if (desktopMq.addEventListener) desktopMq.addEventListener("change", setHeroVideo);
   }
 
+  /* ---------- Malha dourada interativa na abertura (WebGL) ---------- */
+  // Hexágonos dourados aparecem perto do cursor e em ondas a cada clique/toque.
+  // Sem WebGL2 ou com "reduzir movimento" ativado, o site segue igual, sem o efeito.
+  var ffCanvas = $("#hero-forcefield");
+  if (ffCanvas && window.createForceField && !reduceMotion) {
+    try {
+      window.createForceField({ source: null, content: ffCanvas.parentElement, output: ffCanvas }, {
+        shape: "hexagon",
+        color: [0.80, 0.63, 0.34],      // dourado da marca
+        edgeColor: [0.95, 0.85, 0.62],
+        opacity: 0.9,
+        cellScale: 11,
+        lineWidth: 0.025,
+        gridOpacity: 0,
+        gridReveal: "both",
+        gridRevealStrength: 1.4,
+        gridRevealRadius: 220,
+        gridFade: 0.6,
+        flashIntensity: 0,
+        flowIntensity: 0,
+        edgeGlow: 0,
+        rippleSpeed: 0.6,
+        rippleDuration: 1.8,
+        rippleIntensity: 0.45,
+        refraction: 0,
+        aberration: 0,
+        haze: 0,
+        tint: 0,
+        hoverGlow: 0.04,
+        hoverRadius: 260,
+        hoverCharge: 0.9,
+        bloom: 0.35,
+        bloomThreshold: 0.35,
+        grain: 0
+      });
+    } catch (e) {}
+  }
+
   /* ---------- Entrada suave das seções ---------- */
   var reveals = document.querySelectorAll(".reveal");
   if (reduceMotion || !("IntersectionObserver" in window)) {

@@ -1176,3 +1176,10 @@ h1, h2 { text-wrap: balance; }
 }
 a.social:hover { background: var(--metal-brushed); color: #3A1A26; border-color: #9C7744; }
 .social.is-soon { opacity: .45; cursor: default; }
+
+/* Malha dourada interativa (WebGL) sobre a abertura */
+.hero-forcefield {
+  position: absolute; inset: 0; z-index: 3;
+  width: 100%; height: 100%;
+  pointer-events: none;
+}
