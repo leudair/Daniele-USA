@@ -255,6 +255,26 @@
     }).join("");
   }
 
+  /* ---------- Vídeo da abertura (versão de computador ou de celular) ---------- */
+  var heroVideo = $("#hero-video");
+  if (heroVideo) {
+    var desktopMq = window.matchMedia("(min-width: 900px)");
+    var setHeroVideo = function () {
+      var v = desktopMq.matches ? "desktop" : "mobile";
+      if (heroVideo.dataset.current === v) return;
+      heroVideo.dataset.current = v;
+      heroVideo.poster = heroVideo.getAttribute("data-poster-" + v);
+      if (reduceMotion) return; // só a imagem parada
+      var mp4 = heroVideo.getAttribute("data-src-" + v);
+      // MP4 (H.264) na maioria dos navegadores; WebM como reserva.
+      heroVideo.src = heroVideo.canPlayType('video/mp4; codecs="avc1.640028"') ? mp4 : mp4.replace(/\.mp4$/, ".webm");
+      var p = heroVideo.play();
+      if (p && p.catch) p.catch(function () {});
+    };
+    setHeroVideo();
+    if (desktopMq.addEventListener) desktopMq.addEventListener("change", setHeroVideo);
+  }
+
   /* ---------- Entrada suave das seções ---------- */
   var reveals = document.querySelectorAll(".reveal");
   if (reduceMotion || !("IntersectionObserver" in window)) {

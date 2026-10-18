@@ -11,8 +11,8 @@
   <meta property="og:description" content="Um pouco do meu mundo. Uma seleção para o seu.">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:image" content="assets/img/dana-hero.webp">
-  <link rel="preload" as="image" href="assets/img/dana-hero-640.webp" media="(max-width: 899px)">
-  <link rel="preload" as="image" href="assets/img/home-fundo.webp" media="(min-width: 900px)">
+  <link rel="preload" as="image" href="assets/img/hero-video-poster-mobile.webp" media="(max-width: 899px)">
+  <link rel="preload" as="image" href="assets/img/hero-video-poster.webp" media="(min-width: 900px)">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2232%22 fill=%22%2324121B%22/%3E%3Ccircle cx=%2232%22 cy=%2232%22 r=%2227%22 fill=%22none%22 stroke=%22%23D9BC8A%22 stroke-width=%221.5%22/%3E%3Ctext x=%2232%22 y=%2243%22 font-family=%22Georgia,serif%22 font-style=%22italic%22 font-size=%2232%22 fill=%22%23E9D3A8%22 text-anchor=%22middle%22%3ED%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,7 +46,12 @@
       <div class="hero-frame" aria-hidden="true"></div>
       <div class="hero-inner">
         <div class="hero-visual">
-          <figure class="hero-photo arch" data-foto="hero"></figure>
+          <div class="hero-media">
+            <video class="hero-video" id="hero-video" muted loop playsinline autoplay preload="metadata"
+              data-src-desktop="assets/video/hero-desktop.mp4" data-poster-desktop="assets/img/hero-video-poster.webp"
+              data-src-mobile="assets/video/hero-mobile.mp4" data-poster-mobile="assets/img/hero-video-poster-mobile.webp"
+              aria-label="Dana dentro de um arco dourado apresentando suas indicações"></video>
+          </div>
           <div class="seal" aria-hidden="true">
             <svg viewBox="0 0 120 120">
               <defs><path id="seal-path-1" d="M60,60 m-45,0 a45,45 0 1,1 90,0 a45,45 0 1,1 -90,0"/></defs>
