@@ -805,3 +805,190 @@ section { scroll-margin-top: var(--header-h); }
   .js .reveal { opacity: 1; transform: none; }
   .card.is-highlight .card-frame { box-shadow: 0 0 0 3px var(--gold); }
 }
+
+
+/* ==========================================================================
+   Acabamento final: serifa clássica em relevo + metais dourados
+   ========================================================================== */
+
+:root {
+  --serif: "Playfair Display", "Didot", Georgia, serif;
+  --rose: #A8175E;
+  --metal: linear-gradient(180deg, #F8E9C6 0%, #DCBD80 24%, #B58B4D 50%, #E8CD95 72%, #A47C44 100%);
+  --metal-brushed:
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, .09) 0 1px, rgba(0, 0, 0, 0) 1px 3px, rgba(110, 75, 30, .06) 3px 4px),
+    linear-gradient(180deg, #F7E6BE 0%, #E2C68E 26%, #C49C5E 52%, #E5CA92 78%, #B68D52 100%);
+  --emboss:
+    -1px -1px 0 rgba(255, 255, 255, .9),
+    1px 1px 0 rgba(70, 20, 40, .35),
+    0 3px 4px rgba(70, 20, 40, .18),
+    0 12px 24px rgba(70, 20, 40, .14);
+  --emboss-soft:
+    -1px -1px 0 rgba(255, 255, 255, .8),
+    1px 1px 0 rgba(70, 20, 40, .25),
+    0 3px 8px rgba(70, 20, 40, .12);
+}
+
+h1, h2, h3 { font-family: var(--serif); font-weight: 500; letter-spacing: -0.01em; }
+h1, h2 { text-shadow: var(--emboss); }
+h3 { text-shadow: var(--emboss-soft); }
+
+/* Filete externo mais discreto */
+.page-frame { padding: 4px; }
+@media (min-width: 900px) { .page-frame { padding: 5px; } .page-frame::after { inset: 5px; } }
+
+/* Cabeçalho */
+.wordmark {
+  font-family: var(--serif); font-weight: 500; font-size: 1.55rem; letter-spacing: -0.01em;
+  color: var(--wine); text-shadow: var(--emboss-soft);
+}
+.wordmark em, .footer-mark em {
+  font-family: var(--serif); font-style: italic; font-size: 1em; padding: 0 .04em;
+  background: none; -webkit-background-clip: border-box; background-clip: border-box;
+  color: #B08A52;
+}
+.site-nav a { color: #8E6A38; font-weight: 500; letter-spacing: .2em; }
+.site-nav a:hover { color: var(--wine); }
+@media (min-width: 900px) {
+  .wordmark { font-size: 2.15rem; }
+  .site-nav a { font-size: .8rem; }
+}
+
+/* Abertura */
+.hero .eyebrow, .eyebrow { color: #9C7744; }
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-variation-settings: normal;
+  letter-spacing: -0.015em; word-spacing: normal;
+  font-size: clamp(2.7rem, 10.8vw, 6.6rem);
+  line-height: 1.02;
+  color: var(--wine);
+  text-shadow: var(--emboss);
+}
+.hero h1 em { font-weight: 500; font-style: italic; color: var(--rose); }
+.hero-bio { color: var(--ink); font-weight: 400; }
+
+/* Foto em arco com moldura de ouro */
+.hero-photo {
+  padding: 9px;
+  background: var(--metal);
+  border-radius: 999px 999px 0 0;
+  overflow: visible;
+  outline: 1px solid rgba(176, 139, 85, .85); outline-offset: 13px;
+  box-shadow:
+    inset 0 2px 1px rgba(255, 255, 255, .75),
+    inset 0 -2px 2px rgba(110, 75, 30, .45),
+    0 34px 50px -30px rgba(74, 24, 48, .6);
+}
+.hero-photo > img, .hero-photo > .ph {
+  display: block; width: 100%; height: 100%;
+  border-radius: 999px 999px 0 0;
+  box-shadow: 0 0 0 2px #F6EAD0, 0 0 0 3px #A9824B;
+}
+
+/* Selo em moeda de ouro */
+.seal { color: #6B4A20; }
+.seal svg { animation: none; }
+.seal text { fill: #5C3F1C; font-weight: 500; }
+.hero .seal::before, .seal::before {
+  content: ""; position: absolute; inset: 0; border-radius: 50%;
+  background: radial-gradient(circle at 34% 28%, #FFF6DC 0%, #EBD29A 28%, #C9A266 58%, #A47C44 82%, #7E5D2F 100%);
+  backdrop-filter: none; -webkit-backdrop-filter: none;
+  box-shadow:
+    0 14px 26px -12px rgba(60, 30, 10, .6),
+    inset 0 2px 2px rgba(255, 255, 255, .75),
+    inset 0 -3px 5px rgba(90, 60, 20, .45);
+}
+.seal span {
+  background: none; -webkit-background-clip: border-box; background-clip: border-box;
+  color: var(--wine);
+  font-family: var(--serif); font-style: italic; font-weight: 500;
+  text-shadow: -1px -1px 0 rgba(255, 244, 214, .8), 1px 1px 1px rgba(80, 50, 20, .55);
+}
+
+/* Botões em ouro escovado */
+.btn-gold {
+  background: var(--metal-brushed); background-size: auto;
+  color: #3A1A26;
+  border: 1px solid #9C7744;
+  font-weight: 600; letter-spacing: .16em; font-size: .8rem;
+  min-height: 58px; padding: 0 36px;
+  text-shadow: 0 1px 0 rgba(255, 248, 228, .55);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .75),
+    inset 0 -2px 0 rgba(120, 85, 40, .35),
+    0 10px 20px -10px rgba(74, 40, 20, .6);
+  transition: filter .3s, box-shadow .3s, transform .3s;
+}
+.btn-gold::after { inset: 5px; border: 1px solid rgba(110, 75, 30, .55); box-shadow: inset 0 0 0 1px rgba(255, 248, 230, .35); }
+.btn-gold:hover { filter: brightness(1.06); transform: translateY(-1px); }
+.btn-gold.is-disabled { background: var(--metal-brushed); color: #5C3F1C; border: 1px solid #9C7744; opacity: .75; }
+
+.link-line { color: var(--wine); font-weight: 500; background-image: linear-gradient(#B08A52, #B08A52); }
+.link-light { color: var(--gold-pale); }
+
+/* Do Instagram para cá */
+.insta {
+  position: relative;
+  background:
+    radial-gradient(ellipse 50% 70% at 100% 40%, rgba(184, 146, 90, .10), transparent 70%),
+    var(--ivory);
+  border: 0;
+}
+.insta::before {
+  content: ""; position: absolute; inset: 14px; pointer-events: none;
+  border: 1px solid rgba(176, 139, 85, .7);
+  outline: 1px solid rgba(176, 139, 85, .35); outline-offset: -6px;
+}
+.insta-list { padding-bottom: 8px; align-items: flex-start; }
+.post {
+  flex: 0 0 80%;
+  background: none; padding: 0; box-shadow: none;
+  display: flex; flex-direction: column; align-items: center;
+  transform: none !important; margin-top: 0 !important;
+}
+.post-card {
+  position: relative; width: 100%;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 16px 16px 48px;
+  background: #FFFCF6;
+  border: 5px solid transparent;
+  border-image: var(--metal) 1;
+  box-shadow: 0 22px 40px -26px rgba(74, 24, 48, .5);
+}
+.post-photo { width: 100%; box-shadow: 0 0 0 2px #FFF8EA, 0 0 0 4px #C9A469; }
+.post-caption {
+  margin: 18px 0 0;
+  font-family: var(--serif); font-style: italic; font-size: 1.6rem; line-height: 1.2;
+  color: var(--wine); text-shadow: var(--emboss-soft);
+}
+.post-btn {
+  position: absolute; left: 50%; bottom: -30px; transform: translateX(-50%);
+  white-space: nowrap; width: max-content; max-width: 92%;
+}
+.post-btn:hover { transform: translate(-50%, -1px); }
+.post-find { margin-top: 44px; font-size: .74rem; }
+
+@media (min-width: 600px) { .post { flex-basis: 46%; } }
+@media (min-width: 900px) {
+  .insta { padding: 104px 0 96px; }
+  .insta::before { inset: 22px; }
+  .insta-list { gap: 44px; padding-bottom: 12px; }
+  .post-card { padding: 22px 22px 56px; }
+  .post-caption { font-size: 2rem; }
+}
+
+/* Cards de produto com aro dourado */
+.card-frame { border: 3px solid transparent; border-image: var(--metal) 1; }
+.card-name { text-shadow: var(--emboss-soft); }
+
+/* Seções escuras: relevo vira sombra suave */
+.destaque h2, .destaque h3 { text-shadow: 0 2px 12px rgba(0, 0, 0, .35); }
+.destaque-text h2 em { text-shadow: none; }
+@media (min-width: 900px) {
+  .hero-inner { grid-template-columns: 1.15fr 0.85fr; }
+  .hero h1 { font-size: min(5.5rem, 6vw); }
+  .post-btn { font-size: .84rem; letter-spacing: .14em; }
+}
+h1, h2 { text-wrap: balance; }

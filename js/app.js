@@ -242,16 +242,16 @@
     instaList.innerHTML = posts.map(function (p) {
       var link = p.link || D.instagram;
       var prod = p.produto && bySlug[p.produto];
-      return '<li class="post">' +
-        '<a class="post-photo" href="' + esc(link) + '" target="_blank" rel="noopener">' +
-        (p.capa ? img(p.capa, t(p.legenda)) : placeholder(S.capaPost, "")) +
-        (p.exemplo ? '<span class="badge">' + esc(S.exemplo) + "</span>" : "") +
-        '<span class="sr-only">' + esc(S.verInstagram) + ": " + esc(t(p.legenda)) + " " + esc(S.abreNovaAba) + "</span></a>" +
+      return '<li class="post"><div class="post-card">' +
+        '<a class="post-photo" href="' + esc(link) + '" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">' +
+        (p.capa ? img(p.capa, t(p.legenda), false, "(min-width: 900px) 28vw, 78vw") : placeholder(S.capaPost, "")) +
+        (p.exemplo ? '<span class="badge">' + esc(S.exemplo) + "</span>" : "") + "</a>" +
         '<p class="post-caption">' + esc(t(p.legenda)) + "</p>" +
-        '<p class="post-links">' +
-        '<a class="link-line" href="' + esc(link) + '" target="_blank" rel="noopener">' + esc(S.verInstagram) + "</a>" +
-        (prod ? '<a class="link-line link-accent" href="#produto/' + esc(prod.slug) + '">' + esc(S.encontrarProduto) + "</a>" : "") +
-        "</p></li>";
+        '<a class="btn btn-gold post-btn" href="' + esc(link) + '" target="_blank" rel="noopener">' + esc(S.verInstagram) +
+        '<span class="sr-only">: ' + esc(t(p.legenda)) + " " + esc(S.abreNovaAba) + "</span></a>" +
+        "</div>" +
+        (prod ? '<a class="link-line post-find" href="#produto/' + esc(prod.slug) + '">' + esc(S.encontrarProduto) + "</a>" : "") +
+        "</li>";
     }).join("");
   }
 
