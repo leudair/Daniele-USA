@@ -166,6 +166,30 @@ window.DANA = {
    *  link    — URL da publicação original
    *  produtos — opcional, slugs dos produtos do look ("Compre o look")
    */
+
+  /*
+   * Lifestyle: momentos do dia a dia da Dana (o lado "vida" do Instagram).
+   * `categoria` liga o momento ao filtro da vitrine ("Ver indicações").
+   * Troque as fotos pelas fotos reais de lifestyle dela.
+   */
+  lifestyle: {
+    frase: { pt: "Viver bem é feito de pequenos rituais.", en: "Living well is made of small rituals." },
+    momentos: [
+      { foto: "assets/img/cat-casa.webp", categoria: "casa",
+        titulo: { pt: "Manhãs sem pressa", en: "Slow mornings" },
+        texto: { pt: "Café, flores frescas e um tempo só meu antes do dia começar.", en: "Coffee, fresh flowers and a moment for myself before the day begins." } },
+      { foto: "assets/img/insta-3.webp", categoria: "viagem",
+        titulo: { pt: "Pelo mundo", en: "Around the world" },
+        texto: { pt: "Hotéis, terraços e lugares que guardo no coração.", en: "Hotels, terraces and places I keep close to my heart." } },
+      { foto: "assets/img/insta-1.webp", categoria: "beleza",
+        titulo: { pt: "Ritual de beleza", en: "Beauty ritual" },
+        texto: { pt: "Perfumes, cuidados e o que faz eu me sentir eu.", en: "Fragrances, self-care and what makes me feel like me." } },
+      { foto: "assets/img/insta-2.webp", categoria: "moda",
+        titulo: { pt: "Look do dia", en: "Outfit of the day" },
+        texto: { pt: "Peças leves, tons suaves e detalhes dourados.", en: "Light pieces, soft tones and golden details." } }
+    ]
+  },
+
   instagramPosts: [
     { capa: "assets/img/insta-1.webp", legenda: { pt: "Detalhes em dourado", en: "Golden details" }, link: "", produtos: ["argolas-douradas"] },
     { capa: "assets/img/insta-2.webp", legenda: { pt: "Look do dia", en: "Outfit of the day" }, link: "", produtos: ["bolsa-transversal", "oculos-de-sol"] },

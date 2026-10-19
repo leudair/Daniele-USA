@@ -30,7 +30,9 @@ window.I18N = {
     parceriasDm: "Enviar mensagem no Instagram",
     parceriasEmail: "Enviar e-mail",
     amazonAviso: "Como associada da Amazon, recebo comissão por compras qualificadas.",
-    showcaseKicker: "Interativo"
+    showcaseKicker: "Interativo",
+    verIndicacoesDe: "Ver indicações",
+    momento: "Momento"
   },
   en: {
     skip: "Skip to recommendations",
@@ -110,6 +112,12 @@ window.I18N = {
     rodapeParcerias: "Work with me",
     amazonAviso: "As an Amazon Associate I earn from qualifying purchases.",
     showcaseKicker: "Interactive",
+    navLifestyle: "Lifestyle",
+    lifestyleKicker: "Lifestyle",
+    lifestyleTitulo: "My <em>everyday</em>",
+    lifestyleTexto: "The moments behind the picks: routine, travel and little pleasures.",
+    verIndicacoesDe: "See the picks",
+    momento: "Moment",
     altHero: "Danielly Matos Dana in a pink blazer and white trousers, holding a light handbag",
     altParcerias: "Danielly Matos Dana in a pink dress on a travertine pedestal, with flowers and a silk drape",
     showcaseTitulo: "Take a <em>closer look</em>",

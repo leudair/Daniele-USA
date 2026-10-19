@@ -388,6 +388,38 @@
     }).join("");
   }
 
+  /* ---------- Lifestyle ---------- */
+  var life = D.lifestyle || {};
+  var momentos = life.momentos || [];
+  var lifeList = $("#lifestyle-list");
+  if (!momentos.length) {
+    lifeList.closest("section").hidden = true;
+  } else {
+    var catComProduto = {};
+    catsComProduto.forEach(function (c) { catComProduto[c.id] = true; });
+    lifeList.innerHTML = momentos.map(function (m, i) {
+      var titulo = t(m.titulo);
+      var link = m.categoria && catComProduto[m.categoria]
+        ? '<a class="link-line lifestyle-link" href="#indicacoes" data-life-cat="' + esc(m.categoria) + '">' + esc(S.verIndicacoesDe) +
+          '<span class="sr-only">: ' + esc(catNome[m.categoria] || titulo) + "</span></a>"
+        : "";
+      return '<li class="lifestyle-item reveal">' +
+        '<figure class="lifestyle-photo">' + img(m.foto, titulo, false, "(min-width: 900px) 24vw, 72vw") + "</figure>" +
+        '<p class="lifestyle-num">' + esc(S.momento) + " " + pad2(i + 1) + "</p>" +
+        "<h3>" + esc(titulo) + "</h3>" +
+        "<p>" + esc(t(m.texto)) + "</p>" + link + "</li>";
+    }).join("");
+    if (life.frase) $("#lifestyle-quote").textContent = t(life.frase);
+    lifeList.addEventListener("click", function (e) {
+      var a = e.target.closest("[data-life-cat]");
+      if (!a) return;
+      e.preventDefault();
+      limparFiltros();
+      setFiltro(a.getAttribute("data-life-cat"));
+      vitrine.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+    });
+  }
+
   /* ---------- Vitrines completas (Amazon Storefront, LTK, ShopMy) ---------- */
   var vitrines = (D.vitrines || []).filter(function (v) { return v.url || D.mostrarExemplos; });
   if (vitrines.length) {
