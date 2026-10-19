@@ -34,6 +34,10 @@
       var key = el.getAttribute("data-i18n");
       if (S[key]) el.innerHTML = S[key];
     });
+    document.querySelectorAll("[data-i18n-alt]").forEach(function (el) {
+      var key = el.getAttribute("data-i18n-alt");
+      if (S[key]) el.setAttribute("alt", S[key]);
+    });
     document.querySelectorAll("[data-i18n-aria]").forEach(function (el) {
       var key = el.getAttribute("data-i18n-aria");
       if (S[key]) el.setAttribute("aria-label", S[key]);

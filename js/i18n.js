@@ -110,6 +110,8 @@ window.I18N = {
     rodapeParcerias: "Work with me",
     amazonAviso: "As an Amazon Associate I earn from qualifying purchases.",
     showcaseKicker: "Interactive",
+    altHero: "Danielly Matos Dana in a pink blazer and white trousers, holding a light handbag",
+    altParcerias: "Danielly Matos Dana in a pink dress on a travertine pedestal, with flowers and a silk drape",
     showcaseTitulo: "Take a <em>closer look</em>",
     showcaseTexto: "Drag to explore every detail.",
     metaTitle: "Escolhas da Dana · Dana’s Picks · @onlydaninha30",

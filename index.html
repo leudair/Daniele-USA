@@ -38,8 +38,7 @@
     }
   }
   </script>
-  <link rel="preload" as="image" href="assets/img/hero-video-poster-mobile.webp" media="(max-width: 899px)">
-  <link rel="preload" as="image" href="assets/img/hero-video-poster.webp" media="(min-width: 900px)">
+  <link rel="preload" as="image" href="assets/img/dana-hero-2-640.webp" imagesrcset="assets/img/dana-hero-2-640.webp 640w, assets/img/dana-hero-2.webp 1000w" imagesizes="(min-width: 900px) 40vw, 66vw">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2232%22 fill=%22%2324121B%22/%3E%3Ccircle cx=%2232%22 cy=%2232%22 r=%2227%22 fill=%22none%22 stroke=%22%23D9BC8A%22 stroke-width=%221.5%22/%3E%3Ctext x=%2232%22 y=%2243%22 font-family=%22Georgia,serif%22 font-style=%22italic%22 font-size=%2232%22 fill=%22%23E9D3A8%22 text-anchor=%22middle%22%3ED%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -77,12 +76,9 @@
       <div class="hero-frame" aria-hidden="true"></div>
       <div class="hero-inner">
         <div class="hero-visual">
-          <div class="hero-media">
-            <video class="hero-video" id="hero-video" muted loop playsinline autoplay preload="metadata"
-              data-src-desktop="assets/video/hero-desktop.mp4" data-poster-desktop="assets/img/hero-video-poster.webp"
-              data-src-mobile="assets/video/hero-mobile.mp4" data-poster-mobile="assets/img/hero-video-poster-mobile.webp"
-              aria-label="Dana dentro de um arco dourado apresentando suas indicações" data-i18n-aria="ariaVideo"></video>
-          </div>
+          <figure class="hero-photo arch">
+            <img src="assets/img/dana-hero-2.webp" srcset="assets/img/dana-hero-2-640.webp 640w, assets/img/dana-hero-2.webp 1000w" sizes="(min-width: 900px) 40vw, 66vw" alt="Danielly Matos Dana de blazer rosa e calça branca, segurando uma bolsa clara" width="1000" height="1249" fetchpriority="high" decoding="async" data-i18n-alt="altHero">
+          </figure>
           <div class="seal" aria-hidden="true">
             <svg viewBox="0 0 120 120">
               <defs><path id="seal-path-1" d="M60,60 m-45,0 a45,45 0 1,1 90,0 a45,45 0 1,1 -90,0"/></defs>
@@ -270,10 +266,17 @@
 
   <!-- Parcerias com marcas -->
   <section class="parcerias" id="parcerias" aria-labelledby="parcerias-title">
-    <p class="eyebrow eyebrow-center"><span data-i18n="parceriasKicker">Marcas</span></p>
-    <h2 id="parcerias-title" data-i18n="parceriasTitulo">Parcerias <em>com a Dana</em></h2>
-    <p data-i18n="parceriasTexto">Para propostas de parceria, campanhas e publicidade, entre em contato.</p>
-    <div class="parcerias-actions" id="parcerias-actions"></div>
+    <div class="parcerias-grid">
+      <figure class="parcerias-photo arch reveal">
+        <img src="assets/img/dana-parcerias.webp" srcset="assets/img/dana-parcerias-640.webp 640w, assets/img/dana-parcerias.webp 1000w" sizes="(min-width: 900px) 34vw, 80vw" alt="Danielly Matos Dana de vestido rosa sobre um pedestal de travertino, com flores e cortina de seda" width="1000" height="1249" loading="lazy" decoding="async" data-i18n-alt="altParcerias">
+      </figure>
+      <div class="parcerias-text reveal">
+        <p class="eyebrow"><span data-i18n="parceriasKicker">Marcas</span></p>
+        <h2 id="parcerias-title" data-i18n="parceriasTitulo">Parcerias <em>com a Dana</em></h2>
+        <p data-i18n="parceriasTexto">Para propostas de parceria, campanhas e publicidade, entre em contato.</p>
+        <div class="parcerias-actions" id="parcerias-actions"></div>
+      </div>
+    </div>
   </section>
 
   <footer class="site-footer">
