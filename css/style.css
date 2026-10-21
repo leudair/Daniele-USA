@@ -1351,3 +1351,53 @@ a.social:hover { background: var(--metal-brushed); color: #3A1A26; border-color:
 }
 .post-look-title { margin-bottom: 10px; }
 .post-look li + li { margin-top: 4px; }
+
+/* ---------- Banner editorial com moldura neoclássica ---------- */
+.banner { padding: 56px var(--gutter) 64px; background: var(--ivory); }
+.banner-frame {
+  position: relative; max-width: 1200px; margin: 0 auto;
+  padding: 12px;
+  background: var(--metal-brushed, var(--brushed-gold));
+  box-shadow:
+    0 30px 60px -34px rgba(74, 24, 48, .6),
+    inset 0 1px 0 rgba(255, 255, 255, .6),
+    inset 0 -1px 0 rgba(90, 60, 20, .45);
+}
+.banner-frame::before {
+  /* filete interno duplo, como uma moldura entalhada */
+  content: ""; position: absolute; inset: 5px; pointer-events: none;
+  border: 1px solid rgba(255, 246, 225, .7);
+  box-shadow: inset 0 0 0 1px rgba(110, 80, 40, .45);
+}
+.banner-mat {
+  position: relative; padding: 6px; background: #FFFCF6;
+  box-shadow: inset 0 0 0 1px #C9A469, 0 0 0 1px rgba(110, 80, 40, .5);
+}
+.banner-mat picture, .banner-mat img { display: block; width: 100%; height: auto; }
+.orn { position: absolute; width: 46px; height: 46px; z-index: 2; pointer-events: none; filter: drop-shadow(0 1px 1px rgba(60, 40, 15, .35)); }
+.orn-tl { top: -10px; left: -10px; }
+.orn-tr { top: -10px; right: -10px; transform: scaleX(-1); }
+.orn-bl { bottom: -10px; left: -10px; transform: scaleY(-1); }
+.orn-br { bottom: -10px; right: -10px; transform: scale(-1, -1); }
+
+/* Botão real por cima do botão desenhado na arte (celular) */
+.banner-cta {
+  position: absolute; left: 50%; top: 28.6%;
+  transform: translate(-50%, -50%);
+  width: 52%; min-height: 40px; height: 40px; padding: 0 10px;
+  font-size: .72rem; letter-spacing: .14em; white-space: nowrap; gap: 8px;
+}
+.banner-cta:hover { transform: translate(-50%, -52%); }
+
+@media (min-width: 700px) {
+  .banner { padding: 96px 40px 104px; }
+  .banner-frame { padding: 16px; }
+  .banner-mat { padding: 8px; }
+  .orn { width: 72px; height: 72px; top: auto; left: auto; }
+  .orn-tl { top: -14px; left: -14px; }
+  .orn-tr { top: -14px; right: -14px; }
+  .orn-bl { bottom: -14px; left: -14px; }
+  .orn-br { bottom: -14px; right: -14px; }
+  /* posição do botão na arte horizontal */
+  .banner-cta { left: 22.3%; top: 68.6%; width: 28%; min-height: 0; height: 9.2%; top: 68.6%; font-size: clamp(.66rem, 1.05vw, .86rem); }
+}

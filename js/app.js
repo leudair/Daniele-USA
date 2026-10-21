@@ -344,22 +344,16 @@
   }
   window.addEventListener("hashchange", lerHash);
 
-  /* ---------- Destaque da vez ---------- */
-  var destaque = bySlug[D.destaque] || produtos[0];
-  var destaqueSec = $("#destaque");
-  if (!destaque) {
-    destaqueSec.hidden = true;
-  } else {
-    var dSrc = D.fotos.destaque || destaque.imagem;
-    $("#destaque-photo").innerHTML = dSrc
-      ? img(dSrc, D.fotos.destaque ? t(D.fotosAlt.destaque) : t(destaque.nome))
-      : placeholder(S.fotoProduto, t(destaque.nome).charAt(0));
-    $("#destaque-loja").textContent = lojaNome(destaque);
-    $("#destaque-nome").textContent = t(destaque.nome) + (destaque.exemplo ? " (" + S.exemplo + ")" : "");
-    $("#destaque-frase").textContent = t(destaque.frase);
-    $("#destaque-actions").innerHTML = buyButton(destaque, S.destaqueCta, "btn-gold") +
-      '<a class="link-line link-light" href="#produto/' + esc(destaque.slug) + '">' + esc(S.verNaVitrine) + "</a>";
-  }
+  /* ---------- Banner: botão leva à vitrine já filtrada ---------- */
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest("[data-goto-cat]");
+    if (!a) return;
+    e.preventDefault();
+    limparFiltros();
+    var cat = a.getAttribute("data-goto-cat");
+    if (filtersEl.querySelector('[data-filter="' + cat + '"]')) setFiltro(cat);
+    vitrine.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+  });
 
   /* ---------- Do Instagram para cá ---------- */
   var posts = (D.instagramPosts || []).filter(function (p) {

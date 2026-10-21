@@ -179,20 +179,34 @@
       <p class="lifestyle-quote reveal" id="lifestyle-quote"></p>
     </section>
 
-    <!-- 4. Destaque da vez -->
-    <section class="destaque" id="destaque" aria-labelledby="destaque-title">
-      <div class="destaque-visual reveal">
-        <figure class="destaque-photo corners" id="destaque-photo"></figure>
-      </div>
-      <div class="destaque-text reveal">
-        <p class="eyebrow eyebrow-light"><span data-i18n="destaqueKicker">Destaque da vez</span></p>
-        <h2 id="destaque-title" data-i18n="destaqueTitulo">Olha esse <em>detalhe</em></h2>
-        <div class="destaque-product">
-          <p class="card-store" id="destaque-loja"></p>
-          <h3 id="destaque-nome"></h3>
-          <p id="destaque-frase"></p>
+    <!-- 4. Banner editorial (arte com moldura neoclássica) -->
+    <section class="banner" id="destaque" aria-labelledby="banner-title">
+      <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <defs>
+          <linearGradient id="orn-gold" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#8C6A3B"/><stop offset=".35" stop-color="#F2E2C0"/>
+            <stop offset=".6" stop-color="#B8925A"/><stop offset="1" stop-color="#E6CF9F"/>
+          </linearGradient>
+          <g id="orn-corner" fill="none" stroke="url(#orn-gold)" stroke-linecap="round">
+            <path d="M4 56V14Q4 4 14 4H56" stroke-width="3"/>
+            <path d="M11 56V20Q11 11 20 11H56" stroke-width="1.2"/>
+            <path d="M20 24c0-6 4-9 9-7s4 8-1 9-6-4-3-5" stroke-width="1.6"/>
+            <path d="M24 20c6 0 9 4 7 9s-8 4-9-1 4-6 5-3" stroke-width="1.6"/>
+            <circle cx="19" cy="19" r="3.2" fill="url(#orn-gold)" stroke="none"/>
+            <path d="M30 16c6-4 12-4 18-1M16 30c-4 6-4 12-1 18" stroke-width="1.2"/>
+          </g>
+        </defs>
+      </svg>
+      <div class="banner-frame reveal">
+        <svg class="orn orn-tl" viewBox="0 0 60 60" aria-hidden="true"><use href="#orn-corner"/></svg> <svg class="orn orn-tr" viewBox="0 0 60 60" aria-hidden="true"><use href="#orn-corner"/></svg> <svg class="orn orn-bl" viewBox="0 0 60 60" aria-hidden="true"><use href="#orn-corner"/></svg> <svg class="orn orn-br" viewBox="0 0 60 60" aria-hidden="true"><use href="#orn-corner"/></svg>
+        <div class="banner-mat">
+          <picture>
+            <source media="(max-width: 699px)" srcset="assets/img/banner-moda-mobile-640.webp 640w, assets/img/banner-moda-mobile.webp 941w" sizes="92vw">
+            <img src="assets/img/banner-moda.webp" srcset="assets/img/banner-moda-960.webp 960w, assets/img/banner-moda.webp 1672w" sizes="(min-width: 1300px) 1200px, 92vw" width="1672" height="941" loading="lazy" decoding="async" alt="Dana de blusa de poá, calça jeans pantalona e bolsa vinho, sobre um pedestal de travertino" data-i18n-alt="altBanner">
+          </picture>
+          <h2 id="banner-title" class="sr-only" data-i18n="bannerTitulo">Moda elegante para a sua vida real</h2>
+          <a class="btn btn-gold banner-cta" href="#indicacoes" data-goto-cat="moda"><span data-i18n="bannerCta">Conheça a coleção</span> <span aria-hidden="true">→</span></a>
         </div>
-        <div class="destaque-actions" id="destaque-actions"></div>
       </div>
     </section>
 
