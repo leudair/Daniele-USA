@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Jost:wght@300;400;500;600&family=Pinyon+Script&display=swap">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="/css/style.css">
   <style>
     .legal { max-width: 720px; margin: 0 auto; padding: 56px var(--gutter) 96px; }
     .legal h1 { font-size: clamp(2.2rem, 7vw, 3.4rem); margin-bottom: 28px; }
@@ -22,9 +22,9 @@
 <body>
   <div class="page-frame" aria-hidden="true"></div>
   <header class="site-header">
-    <a class="wordmark" href="index.html" data-keep-lang>Escolhas <em>da</em> Dana</a>
+    <a class="wordmark" href="/" data-keep-lang>Escolhas <em>da</em> Dana</a>
     <nav class="site-nav" aria-label="Principal">
-      <a class="link-line" href="index.html" data-keep-lang style="display:inline-flex"><span lang="pt-BR" data-only="pt">Voltar ao site</span><span lang="en" data-only="en">Back to site</span></a>
+      <a class="link-line" href="/" data-keep-lang style="display:inline-flex"><span lang="pt-BR" data-only="pt">Voltar ao site</span><span lang="en" data-only="en">Back to site</span></a>
       <div class="lang-switch" role="group" aria-label="Idioma / Language">
         <button type="button" data-set-lang="pt" aria-pressed="true" lang="pt-BR">PT</button>
         <button type="button" data-set-lang="en" aria-pressed="false" lang="en">EN</button>
@@ -87,7 +87,7 @@
       document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
       document.title = lang === "pt" ? "Privacidade · Escolhas da Dana" : "Privacy · Escolhas da Dana";
       document.querySelectorAll("[data-only]").forEach(function (el) { el.hidden = el.getAttribute("data-only") !== lang; });
-      document.querySelectorAll("[data-keep-lang]").forEach(function (a) { a.href = "index.html?lang=" + lang; });
+      document.querySelectorAll("[data-keep-lang]").forEach(function (a) { a.href = lang === "en" ? "/en" : "/"; });
       document.querySelectorAll("[data-set-lang]").forEach(function (b) {
         var l = b.getAttribute("data-set-lang");
         b.setAttribute("aria-pressed", String(l === lang));

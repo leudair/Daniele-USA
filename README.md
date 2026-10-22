@@ -64,3 +64,18 @@ Tudo em `js/dados.js`:
 - Link direto por idioma: `?lang=en` ou `?lang=pt` (ex.: `/?lang=en#produto/necessaire-rosa`).
 - Textos fixos: `js/i18n.js` (`en`). Produtos, legendas e fotos: `{ pt: "...", en: "..." }` em `js/dados.js`.
 - Ao cadastrar um produto novo, preencha `nome` e `frase` nos dois idiomas.
+
+## Páginas geradas (SEO)
+
+Depois de mudar produtos (`js/dados.js`), textos (`js/i18n.js`) ou o `index.html`, rode:
+
+```
+node tools/gerar.js
+```
+
+Isso gera/atualiza:
+- `en/index.html` — página inicial em inglês (endereço `/en`)
+- `produto/<slug>.html` e `en/product/<slug>.html` — uma página por produto (`/produto/<slug>` e `/en/product/<slug>`)
+- `sitemap.xml` e o bloco de SEO do `<head>` (entre `seo:start` e `seo:end`)
+
+Itens com `exemplo: true` ganham `noindex` e ficam fora do sitemap.

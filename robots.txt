@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://escolhas-da-dana.vercel.app/sitemap.xml
+Sitemap: https://escolhasdadana.com/sitemap.xml

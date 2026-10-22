@@ -7,7 +7,7 @@ window.DANA = {
   instagram: "https://www.instagram.com/onlydaninha30/",
 
   // Endereço oficial do site (usado em compartilhamento e Google). Troque quando tiver domínio próprio.
-  siteUrl: "https://escolhas-da-dana.vercel.app",
+  siteUrl: "https://escolhasdadana.com",
 
   // Outras redes. O ícone aparece no rodapé mesmo sem link (fica como "em breve").
   redes: {
@@ -38,12 +38,12 @@ window.DANA = {
   destaque: "necessaire-rosa",
 
   // Fotos da Dana. Deixe "" para mostrar o espaço reservado.
-  // Ex.: "assets/img/dana-hero.webp"
+  // Ex.: "/assets/img/dana-hero.webp"
   fotos: {
-    hero: "assets/img/dana-hero.webp",
-    destaque: "assets/img/destaque.webp",
-    sobre1: "assets/img/dana-sobre.webp",
-    sobre2: "assets/img/sobre-detalhe.webp"
+    hero: "/assets/img/dana-hero.webp",
+    destaque: "/assets/img/destaque.webp",
+    sobre1: "/assets/img/dana-sobre.webp",
+    sobre2: "/assets/img/sobre-detalhe.webp"
   },
   fotosAlt: {
     hero: "Danielly Matos Dana",
@@ -53,12 +53,12 @@ window.DANA = {
   },
 
   // Só aparecem no filtro as categorias que tiverem produtos visíveis.
-  imagemTodos: "assets/img/indicacoes.webp",
+  imagemTodos: "/assets/img/indicacoes.webp",
   categorias: [
-    { id: "beleza", nome: { pt: "Beleza", en: "Beauty" }, imagem: "assets/img/cat-beleza.webp" },
-    { id: "moda", nome: { pt: "Moda e acessórios", en: "Fashion & accessories" }, imagem: "assets/img/cat-moda.webp" },
-    { id: "casa", nome: { pt: "Casa e rotina", en: "Home & routine" }, imagem: "assets/img/cat-casa.webp" },
-    { id: "viagem", nome: { pt: "Viagem", en: "Travel" }, imagem: "assets/img/cat-viagem.webp" }
+    { id: "beleza", nome: { pt: "Beleza", en: "Beauty" }, imagem: "/assets/img/cat-beleza.webp" },
+    { id: "moda", nome: { pt: "Moda e acessórios", en: "Fashion & accessories" }, imagem: "/assets/img/cat-moda.webp" },
+    { id: "casa", nome: { pt: "Casa e rotina", en: "Home & routine" }, imagem: "/assets/img/cat-casa.webp" },
+    { id: "viagem", nome: { pt: "Viagem", en: "Travel" }, imagem: "/assets/img/cat-viagem.webp" }
   ],
 
   /*
@@ -94,7 +94,7 @@ window.DANA = {
    *  mercado   — opcional, "us" ou "br" (se vazio, usa o da loja)
    *  colecoes  — opcional, ids das coleções acima. Ex.: ["amazon-finds", "ate-50"]
    *  link      — link de afiliado. Vazio = botão "Link em breve"
-   *  imagem    — ex.: "assets/img/produtos/necessaire-rosa.webp"
+   *  imagem    — ex.: "/assets/img/produtos/necessaire-rosa.webp"
    *  exemplo   — true = item demonstrativo da prévia
    */
   produtos: [
@@ -175,24 +175,24 @@ window.DANA = {
   lifestyle: {
     frase: { pt: "Viver bem é feito de pequenos rituais.", en: "Living well is made of small rituals." },
     momentos: [
-      { foto: "assets/img/cat-casa.webp", categoria: "casa",
+      { foto: "/assets/img/cat-casa.webp", categoria: "casa",
         titulo: { pt: "Manhãs sem pressa", en: "Slow mornings" },
         texto: { pt: "Café, flores frescas e um tempo só meu antes do dia começar.", en: "Coffee, fresh flowers and a moment for myself before the day begins." } },
-      { foto: "assets/img/insta-3.webp", categoria: "viagem",
+      { foto: "/assets/img/insta-3.webp", categoria: "viagem",
         titulo: { pt: "Pelo mundo", en: "Around the world" },
         texto: { pt: "Hotéis, terraços e lugares que guardo no coração.", en: "Hotels, terraces and places I keep close to my heart." } },
-      { foto: "assets/img/insta-1.webp", categoria: "beleza",
+      { foto: "/assets/img/insta-1.webp", categoria: "beleza",
         titulo: { pt: "Ritual de beleza", en: "Beauty ritual" },
         texto: { pt: "Perfumes, cuidados e o que faz eu me sentir eu.", en: "Fragrances, self-care and what makes me feel like me." } },
-      { foto: "assets/img/insta-2.webp", categoria: "moda",
+      { foto: "/assets/img/insta-2.webp", categoria: "moda",
         titulo: { pt: "Look do dia", en: "Outfit of the day" },
         texto: { pt: "Peças leves, tons suaves e detalhes dourados.", en: "Light pieces, soft tones and golden details." } }
     ]
   },
 
   instagramPosts: [
-    { capa: "assets/img/insta-1.webp", legenda: { pt: "Detalhes em dourado", en: "Golden details" }, link: "", produtos: ["argolas-douradas"] },
-    { capa: "assets/img/insta-2.webp", legenda: { pt: "Look do dia", en: "Outfit of the day" }, link: "", produtos: ["bolsa-transversal", "oculos-de-sol"] },
-    { capa: "assets/img/insta-3.webp", legenda: { pt: "Tons de rosa", en: "Shades of pink" }, link: "", produtos: ["bolsa-transversal", "argolas-douradas"] }
+    { capa: "/assets/img/insta-1.webp", legenda: { pt: "Detalhes em dourado", en: "Golden details" }, link: "", produtos: ["argolas-douradas"] },
+    { capa: "/assets/img/insta-2.webp", legenda: { pt: "Look do dia", en: "Outfit of the day" }, link: "", produtos: ["bolsa-transversal", "oculos-de-sol"] },
+    { capa: "/assets/img/insta-3.webp", legenda: { pt: "Tons de rosa", en: "Shades of pink" }, link: "", produtos: ["bolsa-transversal", "argolas-douradas"] }
   ]
 };

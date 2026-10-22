@@ -2,13 +2,13 @@
   "use strict";
 
   var D = window.DANA;
-  /* Idioma: ?lang= na URL > escolha salva > idioma do navegador > português */
+  /* Idioma: cada página tem o seu (data-lang no <html>): "/" = português, "/en" = inglês */
   var LANGS = ["pt", "en"];
-  var params = new URLSearchParams(location.search);
   var saved = null;
   try { saved = localStorage.getItem("dana-lang"); } catch (e) {}
   var browser = (navigator.language || "").toLowerCase().indexOf("pt") === 0 ? "pt" : "en";
-  var lang = [params.get("lang"), saved, browser].filter(function (l) { return LANGS.indexOf(l) > -1; })[0] || "pt";
+  var lang = document.documentElement.getAttribute("data-lang") || "pt";
+  if (LANGS.indexOf(lang) < 0) lang = "pt";
   var S = Object.assign({}, window.I18N.pt, window.I18N[lang] || {});
 
   function t(v) {
@@ -47,19 +47,35 @@
     if (md && S.metaDesc) md.setAttribute("content", S.metaDesc);
   }
 
-  // Botão PT | EN: salva a escolha e recarrega no idioma escolhido, mantendo a posição (#)
+  // Botão PT | EN: salva a escolha e abre a página do outro idioma, mantendo a posição (#)
+  var HOME = { pt: "/", en: "/en" };
   document.querySelectorAll("[data-set-lang]").forEach(function (b) {
     var l = b.getAttribute("data-set-lang");
     b.setAttribute("aria-pressed", String(l === lang));
     b.addEventListener("click", function () {
       if (l === lang) return;
       try { localStorage.setItem("dana-lang", l); } catch (e) {}
-      var u = new URL(location.href);
-      u.searchParams.set("lang", l);
-      location.href = u.toString();
+      location.href = HOME[l] + location.hash;
     });
   });
-  document.querySelectorAll('a[href="privacidade.html"], a[href="termos.html"]').forEach(function (a) {
+  // Visitante cujo navegador está em outro idioma: sugere a versão certa (sem redirecionar, para não atrapalhar o Google)
+  if (!saved && browser !== lang) {
+    var lb = $("#lang-bar");
+    if (lb) {
+      lb.innerHTML = '<a href="' + HOME[browser] + '" lang="' + (browser === "pt" ? "pt-BR" : "en") + '">' +
+        (browser === "pt" ? "Ver o site em português →" : "View this page in English →") + "</a>" +
+        '<button type="button" aria-label="' + (lang === "pt" ? "Fechar" : "Close") + '">×</button>';
+      lb.hidden = false;
+      lb.querySelector("a").addEventListener("click", function () {
+        try { localStorage.setItem("dana-lang", browser); } catch (e) {}
+      });
+      lb.querySelector("button").addEventListener("click", function () {
+        try { localStorage.setItem("dana-lang", lang); } catch (e) {}
+        lb.hidden = true;
+      });
+    }
+  }
+  document.querySelectorAll('a[href="/privacidade.html"], a[href="/termos.html"]').forEach(function (a) {
     a.href = a.getAttribute("href") + "?lang=" + lang;
   });
 
@@ -163,6 +179,7 @@
   var toggleBtn = $("#toggle-grid");
   var filtroAtivo = "todos";
 
+  function urlProduto(p) { return (lang === "en" ? "/en/product/" : "/produto/") + encodeURIComponent(p.slug); }
   function pad2(n) { return (n < 10 ? "0" : "") + n; }
 
   track.innerHTML = produtos.map(function (p, i) {
@@ -175,7 +192,7 @@
       '<div class="card-body">' +
       '<p class="card-meta"><span class="card-n">Nº ' + pad2(i + 1) + '</span><span class="card-store">' +
       '<span class="flag" aria-hidden="true">' + BANDEIRA[mercado(p)] + "</span> " + esc(lojaNome(p)) + "</span></p>" +
-      '<h3 class="card-name">' + esc(t(p.nome)) + "</h3>" +
+      '<h3 class="card-name"><a href="' + urlProduto(p) + '">' + esc(t(p.nome)) + "</a></h3>" +
       (catNome[p.categoria] ? '<p class="card-cat">' + esc(catNome[p.categoria]) + "</p>" : "") +
       '<p class="card-text">' + esc(t(p.frase)) + "</p>" +
       buyButton(p, lojaBotao(p), "btn-outline btn-card") +
